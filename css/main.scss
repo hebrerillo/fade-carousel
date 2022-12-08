@@ -1,0 +1,59 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;  /*1 rem = 10px;*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #555;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.navigation-menu {
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+    ul {
+        position: relative;
+        list-style: none;
+        display: flex;
+        column-gap: 4rem;
+        
+        span {
+            cursor: pointer;
+        }
+    }
+    
+    .bottom-line__container {
+        position: relative;
+        height: 0.4rem;
+        .bottom-line {
+            position: absolute;
+            background-color: #fff;
+            height: 100%;
+            width: 0;
+            left: 0;
+            transition: all .4s;
+        }
+    }
+}
+
+
+
