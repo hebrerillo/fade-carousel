@@ -31,8 +31,10 @@ a {
     list-style: none;
     display: flex;
     column-gap: 4rem; }
-    .nav .nav__list span {
+    .nav .nav__list .nav__list__link {
       cursor: pointer; }
+    .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
+      opacity: 0.75; }
   .nav .nav__underline-container {
     position: relative;
     height: 0.4rem; }

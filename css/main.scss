@@ -36,8 +36,12 @@ a {
         display: flex;
         column-gap: 4rem;
         
-        span {
+        .nav__list__link {
             cursor: pointer;
+        }
+        
+        .nav__list__link:not(.nav__list__link--active):not(:hover) {
+            opacity: 0.75;
         }
     }
     

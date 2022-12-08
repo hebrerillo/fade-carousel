@@ -6,7 +6,7 @@ function SlideUnderline()
     this.list = this.navigationMenu.querySelector('.nav__list');
     this.underline = this.navigationMenu.querySelector('.nav__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
-    this.gotoMenuItem(this.list.firstElementChild, false);
+    this.gotoMenuItem(this.list.querySelector('.nav__list__link'), false);
 }
 
 /**
@@ -33,14 +33,22 @@ SlideUnderline.prototype.gotoMenuItemCB = function (event)
  */
 SlideUnderline.prototype.gotoMenuItem = function (menuItemElement, animate = true)
 {
+    if (!menuItemElement)
+    {
+        console.error("SlideUnderline.gotoMenuItem - No menu item!");
+        return;
+    }
+
     if (!animate)
     {
         this.underline.style.transition = 'none';
     }
-    
+
+    this.list.querySelector('.nav__list__link--active').classList.remove('nav__list__link--active');
     this.underline.style.transform = 'translateX(' + (menuItemElement.offsetLeft + 'px') + ')';
     this.underline.style.width = menuItemElement.offsetWidth + 'px';
-
+    menuItemElement.classList.add('nav__list__link--active');
+    
     if (!animate)
     {
         this.underline.offsetHeight;
