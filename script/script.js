@@ -2,9 +2,9 @@
 
 function SlideUnderline()
 {
-    this.navigationMenu = document.querySelector('.navigation-menu');
-    this.list = this.navigationMenu.querySelector('ul');
-    this.underline = this.navigationMenu.querySelector('.navigation-menu__underline');
+    this.navigationMenu = document.querySelector('.nav');
+    this.list = this.navigationMenu.querySelector('.nav__list');
+    this.underline = this.navigationMenu.querySelector('.nav__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
     this.gotoMenuItem(this.list.firstElementChild, false);
 }
@@ -16,7 +16,7 @@ function SlideUnderline()
  */
 SlideUnderline.prototype.gotoMenuItemCB = function (event)
 {
-    const clickedAnchor = event.target.closest('.navigation-menu__list__item__link');
+    const clickedAnchor = event.target.closest('.nav__list__link');
     if (!clickedAnchor)
     {
         return;

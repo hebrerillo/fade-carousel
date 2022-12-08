@@ -21,22 +21,22 @@ a {
   justify-content: center;
   margin-top: 30px; }
 
-.navigation-menu {
+.nav {
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
   row-gap: 0.6rem; }
-  .navigation-menu ul {
+  .nav .nav__list {
     position: relative;
     list-style: none;
     display: flex;
     column-gap: 4rem; }
-    .navigation-menu ul span {
+    .nav .nav__list span {
       cursor: pointer; }
-  .navigation-menu .navigation-menu__underline-container {
+  .nav .nav__underline-container {
     position: relative;
     height: 0.4rem; }
-    .navigation-menu .navigation-menu__underline-container .navigation-menu__underline {
+    .nav .nav__underline-container .nav__underline {
       position: absolute;
       background-color: #fff;
       height: 100%;

@@ -25,12 +25,12 @@ a {
     margin-top: 30px;
 }
 
-.navigation-menu {
+.nav {
     font-size: 1.8rem;
     display: flex;
     flex-direction: column;
     row-gap: 0.6rem;
-    ul {
+    .nav__list {
         position: relative;
         list-style: none;
         display: flex;
@@ -41,10 +41,10 @@ a {
         }
     }
     
-    .navigation-menu__underline-container {
+    .nav__underline-container {
         position: relative;
         height: 0.4rem;
-        .navigation-menu__underline {
+        .nav__underline {
             position: absolute;
             background-color: #fff;
             height: 100%;
