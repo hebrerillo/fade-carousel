@@ -1,6 +1,9 @@
 'use strict';
 
-function SlideUnderline()
+/**
+ * Fade in fade out carousel main class.
+ */
+function FFCarousel()
 {
     this.carousel = document.querySelector('.ffcarousel');
     this.navigationMenu = document.querySelector('.nav');
@@ -15,14 +18,14 @@ function SlideUnderline()
  * Sets the necessary indexes in the menu items and in the target carousel childs
  * 
  */
-SlideUnderline.prototype.setIndexes = function()
+FFCarousel.prototype.setIndexes = function()
 {
     const carouselChildren = this.carousel.children;
     const menuChildren = this.list.querySelectorAll('.nav__list__link');
     
     if (menuChildren.length !== carouselChildren.length)
     {
-        console.error("SlideUnderline.prototype.setIndexes - The number of carousel items and the number of menu items are different");
+        console.error("FFCarousel.prototype.setIndexes - The number of carousel items and the number of menu items are different");
         return;
     }
     
@@ -38,7 +41,7 @@ SlideUnderline.prototype.setIndexes = function()
  * 
  * @param {Event} event The event generated.
  */
-SlideUnderline.prototype.gotoMenuItemCB = function (event)
+FFCarousel.prototype.gotoMenuItemCB = function (event)
 {
     const clickedAnchor = event.target.closest('.nav__list__link');
     if (!clickedAnchor)
@@ -55,11 +58,11 @@ SlideUnderline.prototype.gotoMenuItemCB = function (event)
  * @param {HTMLElement} menuItemElement The list item where the underline will slide to.
  * @param {bool} animate If true, the 'slide' effect is performed. If false, there will be no effect.
  */
-SlideUnderline.prototype.gotoMenuItem = function (menuItemElement, animate = true)
+FFCarousel.prototype.gotoMenuItem = function (menuItemElement, animate = true)
 {
     if (!menuItemElement)
     {
-        console.error("SlideUnderline.gotoMenuItem - No menu item!");
+        console.error("FFCarousel.gotoMenuItem - No menu item!");
         return;
     }
 
@@ -80,4 +83,4 @@ SlideUnderline.prototype.gotoMenuItem = function (menuItemElement, animate = tru
     }
 };
 
-new SlideUnderline();
+new FFCarousel();
