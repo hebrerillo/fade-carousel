@@ -1,3 +1,6 @@
+:root {
+  --default-transition-time: .4s; }
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -43,6 +46,14 @@ a {
       background-color: #fff;
       height: 100%;
       width: 0;
-      transition: all .4s; }
+      transition: all var(--default-transition-time); }
+  .nav .ffcarousel_item {
+    transition: all var(--default-transition-time);
+    opacity: 0;
+    display: none; }
+  .nav .ffcarousel_item--opaque {
+    opacity: 1; }
+  .nav .ffcarousel_item--display {
+    display: block; }
 
 /*# sourceMappingURL=styles.css.map */
