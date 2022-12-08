@@ -4,7 +4,7 @@ function SlideUnderline()
 {
     this.navigationMenu = document.querySelector('.navigation-menu');
     this.list = this.navigationMenu.querySelector('ul');
-    this.underline = this.navigationMenu.querySelector('.bottom-line');
+    this.underline = this.navigationMenu.querySelector('.navigation-menu__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
     this.gotoMenuItem(this.list.firstElementChild, false);
 }

@@ -33,10 +33,10 @@ a {
     column-gap: 4rem; }
     .navigation-menu ul span {
       cursor: pointer; }
-  .navigation-menu .bottom-line__container {
+  .navigation-menu .navigation-menu__underline-container {
     position: relative;
     height: 0.4rem; }
-    .navigation-menu .bottom-line__container .bottom-line {
+    .navigation-menu .navigation-menu__underline-container .navigation-menu__underline {
       position: absolute;
       background-color: #fff;
       height: 100%;
