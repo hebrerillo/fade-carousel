@@ -8,6 +8,7 @@ function FFCarousel()
     this.nextSlide = null;
     this.currentSlide = null;
     this.carousel = document.querySelector('.ffcarousel');
+    this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
     this.navigationMenu = document.querySelector('.nav');
     this.list = this.navigationMenu.querySelector('.nav__list');
     this.underline = this.navigationMenu.querySelector('.nav__underline');
@@ -16,7 +17,29 @@ function FFCarousel()
 }
 
 /**
- * Calls to some initialization functions.
+ * Callback to be executed when a slide has finished the transition.
+ * 
+ * @param {Event} event The event generated when the transition has ended.
+ */
+FFCarousel.prototype.carouselTransitionEndCB = function (event)
+{
+    console.log(event.target);
+    const targetSlide = event.target.closest('.ffcarousel_item');
+    if (!targetSlide)
+    {
+        return;
+    }
+    
+    if (!targetSlide.classList.contains('ffcarousel_item--opaque'))
+    {
+        targetSlide.classList.remove('ffcarousel_item--display');
+        this.currentSlide = this.nextSlide;
+        this.showCurrentSlide(true);
+    }
+};
+
+/**
+ * Calls to initialization functions.
  */
 FFCarousel.prototype.init = function ()
 {
@@ -33,12 +56,12 @@ FFCarousel.prototype.init = function ()
 FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true)
 {
     this.nextSlide = this.carousel.querySelector('[data-carousel-item="' + slideNumber + '"]');
-    this.hideCurrentSlide(false); //TODO change
+    this.hideCurrentSlide(animate);
     
-    if (!animate || true) //TODO change
+    if (!animate)
     {
         this.currentSlide = this.nextSlide;
-        this.showCurrentSlide(false); //TODO change
+        this.showCurrentSlide(false);
     }
 };
 
@@ -54,19 +77,19 @@ FFCarousel.prototype.showCurrentSlide = function(animate = true)
         return;
     }
 
-    if (!animate)
+    if (animate)
     {
         this.currentSlide.style.transition = 'none';
     }
 
     this.currentSlide.classList.add('ffcarousel_item--display');
-    this.currentSlide.classList.add('ffcarousel_item--opaque');
 
-    if (!animate)
+    if (animate)
     {
         this.currentSlide.style.transition = '';
         this.currentSlide.offsetHeight;
     }
+    this.currentSlide.classList.add('ffcarousel_item--opaque');
 };
 
 /**
@@ -162,7 +185,7 @@ FFCarousel.prototype.gotoMenuItem = function (menuItemElement, animate = true)
     {
         this.underline.offsetHeight;
         this.underline.style.transition = '';
-}
+    }
 };
 
 new FFCarousel();
