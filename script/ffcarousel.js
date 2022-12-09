@@ -1,8 +1,10 @@
 'use strict';
 
-
 /**
  * Fade in fade out carousel main class.
+ * 
+ * @param {String} carouselClass The class selector of the carousel
+ * @param {Object} options An object with initialization options.
  */
 function FFCarousel(carouselClass, options = {})
 {
@@ -10,13 +12,64 @@ function FFCarousel(carouselClass, options = {})
     this.currentSlide = null;
     this.carousel = document.querySelector(carouselClass);
     this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
+    this.delay = options.delay; //The time out for the fade in/fade out effect, in milliseconds
+    this.intervalID = null;
     this.init();
 }
 
 /**
+ * Calls to initialization functions.
+ * 
+ */
+FFCarousel.prototype.init = function ()
+{
+    this.setIndexes();
+    this.gotoSlide(0, false, false);
+    this.setInterval();
+};
+
+/**
+ * Initializes the interval to execute the fade in/fade out effect every 'this.delay' milliseconds.
+ */
+FFCarousel.prototype.setInterval = function ()
+{
+    if (this?.delay > 0 && this.intervalID === null)
+    {
+        this.intervalID = window.setInterval(this.slideIntervalCB.bind(this), this.delay);
+    }
+};
+
+/**
+ * Cancels the fade in/fade out effect interval.
+ */
+FFCarousel.prototype.cancelInterval = function () 
+{
+    if (this.intervalID !== null)
+    {
+        window.clearInterval(this.intervalID);
+        this.intervalID = null;
+    }
+};
+
+/**
+ * Callback function that will be executed when the interval times out.
+ */
+FFCarousel.prototype.slideIntervalCB = function ()
+{
+    if (this.currentSlide === null)
+    {
+        return;
+    }
+
+    const currentSlideNumber = (+this.currentSlide.dataset.carouselItem);
+    const nextSlideNumber = currentSlideNumber >= (this.carousel.children.length - 1) ? 0 : currentSlideNumber + 1;
+    this.gotoSlide(nextSlideNumber, true, false);
+};
+
+/**
  * Callback to be executed when a slide has finished the transition.
  * 
- * @param {Event} event The event generated when the transition has ended.
+ * @param {Event} event The event generated when the transition ended.
  */
 FFCarousel.prototype.carouselTransitionEndCB = function (event)
 {
@@ -30,16 +83,9 @@ FFCarousel.prototype.carouselTransitionEndCB = function (event)
     {
         targetSlide.classList.remove('ffcarousel_item--display');
         this.currentSlide = this.nextSlide;
+        this.nextSlide = null;
         this.showCurrentSlide(true);
     }
-};
-
-/**
- * Calls to initialization functions.
- */
-FFCarousel.prototype.init = function ()
-{
-    this.setIndexes();
 };
 
 /**
@@ -47,16 +93,33 @@ FFCarousel.prototype.init = function ()
  * 
  * @param {Number} slideNumber
  * @param {bool} animate True if the slides should be hide and shown applying a fade in/fade out effect.
+ * @param {bool] cancelInterval True if the auto play for the carousel should be canceled, false otherwise. In case it is cancelled, the function 
+ *               will reenable the interval before exiting.
  */
-FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true)
+FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true, cancelInterval = true)
 {
     this.nextSlide = this.carousel.querySelector('[data-carousel-item="' + slideNumber + '"]');
+    if (this.nextSlide === this.currentSlide)
+    {
+        return;
+    }
+
+    if (cancelInterval)
+    {
+        this.cancelInterval();
+    }
+
     this.hideCurrentSlide(animate);
     
     if (!animate)
     {
         this.currentSlide = this.nextSlide;
         this.showCurrentSlide(false);
+    }
+    
+    if (cancelInterval)
+    {
+        this.setInterval();
     }
 };
 
@@ -120,7 +183,7 @@ FFCarousel.prototype.hideCurrentSlide = function(fadeOut = true)
  */
 FFCarousel.prototype.setIndexes = function ()
 {
-    const carouselChildren = this.carousel.children; //TODO, perform a query of the carousel items.
+    const carouselChildren = this.carousel.children;
     for (let i = 0; i < carouselChildren.length; ++i)
     {
         carouselChildren[i].dataset.carouselItem = i;
