@@ -9,10 +9,6 @@ function FFCarousel()
     this.currentSlide = null;
     this.carousel = document.querySelector('.ffcarousel');
     this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
-    this.navigationMenu = document.querySelector('.nav');
-    this.list = this.navigationMenu.querySelector('.nav__list');
-    this.underline = this.navigationMenu.querySelector('.nav__underline');
-    this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
     this.init();
 }
 
@@ -23,7 +19,6 @@ function FFCarousel()
  */
 FFCarousel.prototype.carouselTransitionEndCB = function (event)
 {
-    console.log(event.target);
     const targetSlide = event.target.closest('.ffcarousel_item');
     if (!targetSlide)
     {
@@ -44,7 +39,6 @@ FFCarousel.prototype.carouselTransitionEndCB = function (event)
 FFCarousel.prototype.init = function ()
 {
     this.setIndexes();
-    this.gotoMenuItem(this.list.querySelector('.nav__list__link'), false);
 };
 
 /**
@@ -68,23 +62,23 @@ FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true)
 /**
  * Shows the current slide.
  * 
- * @param {bool} animate True if the slide should be shown applying a fade in effect.
+ * @param {bool} fadeIn True if the slide should be shown applying a fade-in effect.
  */
-FFCarousel.prototype.showCurrentSlide = function(animate = true)
+FFCarousel.prototype.showCurrentSlide = function(fadeIn = true)
 {
     if (!this.currentSlide)
     {
         return;
     }
 
-    if (animate)
+    if (fadeIn)
     {
         this.currentSlide.style.transition = 'none';
     }
 
     this.currentSlide.classList.add('ffcarousel_item--display');
 
-    if (animate)
+    if (fadeIn)
     {
         this.currentSlide.style.transition = '';
         this.currentSlide.offsetHeight;
@@ -95,23 +89,23 @@ FFCarousel.prototype.showCurrentSlide = function(animate = true)
 /**
  * Hides the current slide.
  * 
- * @param {bool} animate True if the slide should be hidden applying a fade out effect.
+ * @param {bool} fadeOut True if the slide should be hidden applying a fade out effect.
  */
-FFCarousel.prototype.hideCurrentSlide = function(animate = true)
+FFCarousel.prototype.hideCurrentSlide = function(fadeOut = true)
 {
     if (!this.currentSlide)
     {
         return;
     }
 
-    if (!animate)
+    if (!fadeOut)
     {
         this.currentSlide.style.transition = 'none';
     }
 
     this.currentSlide.classList.remove('ffcarousel_item--opaque');
 
-    if (!animate)
+    if (!fadeOut)
     {
         this.currentSlide.style.transition = '';
         this.currentSlide.offsetHeight;
@@ -120,33 +114,34 @@ FFCarousel.prototype.hideCurrentSlide = function(animate = true)
 };
 
 /**
- * Sets the necessary indexes in the menu items and in the target carousel childs
+ * Sets the necessary data indexes in the target carousel childs
  * 
  */
 FFCarousel.prototype.setIndexes = function ()
 {
-    const carouselChildren = this.carousel.children;
-    const menuChildren = this.list.querySelectorAll('.nav__list__link');
-
-    if (menuChildren.length !== carouselChildren.length)
-    {
-        console.error("FFCarousel.prototype.setIndexes - The number of carousel items and the number of menu items are different");
-        return;
-    }
-
-    for (let i = 0; i < menuChildren.length; ++i)
+    const carouselChildren = this.carousel.children; //TODO, perform a query of the carousel items.
+    for (let i = 0; i < carouselChildren.length; ++i)
     {
         carouselChildren[i].dataset.carouselItem = i;
-        menuChildren[i].dataset.carouselTargetItem = i;
     }
 };
+
+function UnderlineSlide()
+{
+    this.navigationMenu = document.querySelector('.nav');
+    this.list = this.navigationMenu.querySelector('.nav__list');
+    this.underline = this.navigationMenu.querySelector('.nav__underline');
+    this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
+    this.carousel = new FFCarousel();
+    this.init();
+}
 
 /**
  * The callback executed when a list item is clicked
  * 
  * @param {Event} event The event generated.
  */
-FFCarousel.prototype.gotoMenuItemCB = function (event)
+UnderlineSlide.prototype.gotoMenuItemCB = function (event)
 {
     const clickedAnchor = event.target.closest('.nav__list__link');
     if (!clickedAnchor)
@@ -158,12 +153,33 @@ FFCarousel.prototype.gotoMenuItemCB = function (event)
 };
 
 /**
+ * Perform some initialization.
+ */
+UnderlineSlide.prototype.init = function()
+{
+    this.setIndexes();
+    this.gotoMenuItem(this.list.querySelector('.nav__list__link'), false);
+};
+
+/**
+ * Sets the necessary indexes in the menu items.
+ * 
+ */
+UnderlineSlide.prototype.setIndexes = function ()
+{
+    this.list.querySelectorAll('.nav__list__link').forEach((element, index) => 
+    {
+        element.dataset.carouselTargetItem = index;
+    });
+};
+
+/**
  * Slides the underline to the list item 'menuItemElement'
  * 
  * @param {HTMLElement} menuItemElement The list item where the underline will slide to.
  * @param {bool} animate If true, the 'slide' effect is performed. If false, there will be no effect.
  */
-FFCarousel.prototype.gotoMenuItem = function (menuItemElement, animate = true)
+UnderlineSlide.prototype.gotoMenuItem = function (menuItemElement, animate = true)
 {
     if (!menuItemElement)
     {
@@ -180,7 +196,7 @@ FFCarousel.prototype.gotoMenuItem = function (menuItemElement, animate = true)
     this.underline.style.transform = 'translateX(' + (menuItemElement.offsetLeft + 'px') + ')';
     this.underline.style.width = menuItemElement.offsetWidth + 'px';
     menuItemElement.classList.add('nav__list__link--active');
-    this.gotoSlide(menuItemElement.dataset.carouselTargetItem, animate);
+    this.carousel.gotoSlide(menuItemElement.dataset.carouselTargetItem, animate);
     if (!animate)
     {
         this.underline.offsetHeight;
@@ -188,4 +204,4 @@ FFCarousel.prototype.gotoMenuItem = function (menuItemElement, animate = true)
     }
 };
 
-new FFCarousel();
+new UnderlineSlide();
