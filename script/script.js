@@ -66,16 +66,25 @@ UnderlineSlide.prototype.gotoMenuItem = function (menuItemElement, animate = tru
         this.underline.style.transition = 'none';
     }
 
-    this.list.querySelector('.nav__list__link--active').classList.remove('nav__list__link--active');
-    this.underline.style.transform = 'translateX(' + (menuItemElement.offsetLeft + 'px') + ')';
-    this.underline.style.width = menuItemElement.offsetWidth + 'px';
-    menuItemElement.classList.add('nav__list__link--active');
+    this.moveUnderline(menuItemElement);
     this.carousel.gotoSlide(menuItemElement.dataset.carouselTargetItem, animate);
     if (!animate)
     {
         this.underline.offsetHeight;
         this.underline.style.transition = '';
     }
+};
+
+/**
+ * Slides the underline 'this.underline' to the menu item 'menuItemElement'.
+ * @param {HTMLElement} menuItemElement The menu item where the underline will slide to.
+ */
+UnderlineSlide.prototype.moveUnderline = function (menuItemElement)
+{
+    this.list.querySelector('.nav__list__link--active').classList.remove('nav__list__link--active');
+    this.underline.style.transform = 'translateX(' + (menuItemElement.offsetLeft + 'px') + ')';
+    this.underline.style.width = menuItemElement.offsetWidth + 'px';
+    menuItemElement.classList.add('nav__list__link--active');
 };
 
 new UnderlineSlide();
