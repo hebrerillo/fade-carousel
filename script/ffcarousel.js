@@ -4,11 +4,11 @@
 /**
  * Fade in fade out carousel main class.
  */
-function FFCarousel()
+function FFCarousel(carouselClass, options = {})
 {
     this.nextSlide = null;
     this.currentSlide = null;
-    this.carousel = document.querySelector('.ffcarousel');
+    this.carousel = document.querySelector(carouselClass);
     this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
     this.init();
 }
