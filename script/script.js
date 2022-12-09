@@ -6,7 +6,7 @@ function UnderlineSlide()
     this.list = this.navigationMenu.querySelector('.nav__list');
     this.underline = this.navigationMenu.querySelector('.nav__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
-    this.carousel = new FFCarousel('.ffcarousel', {delay : 1500});
+    this.carousel = new FFCarousel('.ffcarousel', {delay : 5000});
     this.init();
 }
 

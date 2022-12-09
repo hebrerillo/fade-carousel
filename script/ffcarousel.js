@@ -14,6 +14,7 @@ function FFCarousel(carouselClass, options = {})
     this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
     this.delay = options.delay; //The time out for the fade in/fade out effect, in milliseconds
     this.intervalID = null;
+    this.fading = false; //Whether there is a fade in/fade out animation in progress.
     this.init();
 }
 
@@ -86,6 +87,10 @@ FFCarousel.prototype.carouselTransitionEndCB = function (event)
         this.nextSlide = null;
         this.showCurrentSlide(true);
     }
+    else
+    {
+        this.fading = false;
+    }
 };
 
 /**
@@ -98,6 +103,11 @@ FFCarousel.prototype.carouselTransitionEndCB = function (event)
  */
 FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true, cancelInterval = true)
 {
+    if (this.fading)
+    {
+        return;
+    }
+
     this.nextSlide = this.carousel.querySelector('[data-carousel-item="' + slideNumber + '"]');
     if (this.nextSlide === this.currentSlide)
     {
@@ -108,13 +118,17 @@ FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true, cancelIn
     {
         this.cancelInterval();
     }
-
-    this.hideCurrentSlide(animate);
     
     if (!animate)
     {
         this.currentSlide = this.nextSlide;
+        this.hideCurrentSlide(false);
         this.showCurrentSlide(false);
+    }
+    else
+    {
+        this.fading = true;
+        this.hideCurrentSlide(true);
     }
     
     if (cancelInterval)
