@@ -203,3 +203,12 @@ FFCarousel.prototype.setIndexes = function ()
         carouselChildren[i].dataset.carouselItem = i;
     }
 };
+
+/**
+ * 
+ * @returns {String} The current version of the Fading carousel.
+ */
+FFCarousel.prototype.getVersion = function ()
+{
+    return "0.1.0";
+};
