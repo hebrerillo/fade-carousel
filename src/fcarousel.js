@@ -1,31 +1,29 @@
 'use strict';
 
 /**
- * Fade in fade out carousel main class.
+ * A carousel that shows and hides slides applying a fade-in/fade-out effect. 
  * 
- * @param {String} carouselClass The class selector of the carousel
  * @param {Object} options An object with initialization options.
  */
-function FFCarousel(carouselClass, options = {})
+function FCarousel(options = {})
 {
-    this.nextSlide = null;
-    this.currentSlide = null;
-    this.delay = options.delay; //The time out for the fade in/fade out effect, in milliseconds
-    this.intervalID = null;
-    this.fading = false; //Whether there is a fade in/fade out animation in progress.
-    this.carousel = document.querySelector(carouselClass);
-    if (this.carousel)
+    let currentSlideIndex = 0;
+    
+    function getCurrentSlideIndex()
     {
-        this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
-        this.init();
+        return currentSlideIndex;
     }
+    
+    return {
+      'getCurrentSlideIndex' : getCurrentSlideIndex
+    };
 }
 
 /**
  * Calls to initialization functions.
  * 
  */
-FFCarousel.prototype.init = function ()
+FCarousel.prototype.init = function ()
 {
     this.setIndexes();
     this.gotoSlide(0, false, false);
@@ -35,7 +33,7 @@ FFCarousel.prototype.init = function ()
 /**
  * Initializes the interval to execute the fade in/fade out effect every 'this.delay' milliseconds.
  */
-FFCarousel.prototype.setInterval = function ()
+FCarousel.prototype.setInterval = function ()
 {
     if (this?.delay > 0 && this.intervalID === null)
     {
@@ -46,7 +44,7 @@ FFCarousel.prototype.setInterval = function ()
 /**
  * Cancels the fade in/fade out effect interval.
  */
-FFCarousel.prototype.cancelInterval = function () 
+FCarousel.prototype.cancelInterval = function () 
 {
     if (this.intervalID !== null)
     {
@@ -58,7 +56,7 @@ FFCarousel.prototype.cancelInterval = function ()
 /**
  * Callback function that will be executed when the interval times out.
  */
-FFCarousel.prototype.slideIntervalCB = function ()
+FCarousel.prototype.slideIntervalCB = function ()
 {
     if (this.currentSlide === null)
     {
@@ -75,7 +73,7 @@ FFCarousel.prototype.slideIntervalCB = function ()
  * 
  * @param {Event} event The event generated when the transition ended.
  */
-FFCarousel.prototype.carouselTransitionEndCB = function (event)
+FCarousel.prototype.carouselTransitionEndCB = function (event)
 {
     const targetSlide = event.target.closest('.ffcarousel_item');
     if (!targetSlide)
@@ -104,7 +102,7 @@ FFCarousel.prototype.carouselTransitionEndCB = function (event)
  * @param {bool] cancelInterval True if the auto play for the carousel should be canceled, false otherwise. In case it is cancelled, the function 
  *               will reenable the interval before exiting.
  */
-FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true, cancelInterval = true)
+FCarousel.prototype.gotoSlide = function (slideNumber, animate = true, cancelInterval = true)
 {
     if (this.fading)
     {
@@ -145,7 +143,7 @@ FFCarousel.prototype.gotoSlide = function (slideNumber, animate = true, cancelIn
  * 
  * @param {bool} fadeIn True if the slide should be shown applying a fade-in effect.
  */
-FFCarousel.prototype.showCurrentSlide = function(fadeIn = true)
+FCarousel.prototype.showCurrentSlide = function(fadeIn = true)
 {
     if (!this.currentSlide)
     {
@@ -172,7 +170,7 @@ FFCarousel.prototype.showCurrentSlide = function(fadeIn = true)
  * 
  * @param {bool} fadeOut True if the slide should be hidden applying a fade out effect.
  */
-FFCarousel.prototype.hideCurrentSlide = function(fadeOut = true)
+FCarousel.prototype.hideCurrentSlide = function(fadeOut = true)
 {
     if (!this.currentSlide)
     {
@@ -198,7 +196,7 @@ FFCarousel.prototype.hideCurrentSlide = function(fadeOut = true)
  * Sets the necessary data indexes in the target carousel childs
  * 
  */
-FFCarousel.prototype.setIndexes = function ()
+FCarousel.prototype.setIndexes = function ()
 {
     const carouselChildren = this.carousel.children;
     for (let i = 0; i < carouselChildren.length; ++i)

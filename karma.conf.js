@@ -2,7 +2,7 @@ module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
         files: [
-            'script/ffcarousel.js',
+            'src/fcarousel.js',
             'test/*.js',
             'test/spec/*.js'
         ],
