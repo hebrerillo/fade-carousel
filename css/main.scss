@@ -61,18 +61,9 @@ a {
         }
     }
     
-    .ffcarousel_item {
-        transition: all var(--default-transition-time);
-        opacity: 0;
-        display: none;
-    }
-    
-    .ffcarousel_item--opaque {
-        opacity: 1;
-    }
-    
-    .ffcarousel_item--display {
-        display: block;
+    .carousel {
+        width: 500px;
+        height: 400px;
     }
 }
 

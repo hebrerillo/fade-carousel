@@ -47,13 +47,8 @@ a {
       height: 100%;
       width: 0;
       transition: all var(--default-transition-time); }
-  .nav .ffcarousel_item {
-    transition: all var(--default-transition-time);
-    opacity: 0;
-    display: none; }
-  .nav .ffcarousel_item--opaque {
-    opacity: 1; }
-  .nav .ffcarousel_item--display {
-    display: block; }
+  .nav .carousel {
+    width: 500px;
+    height: 400px; }
 
 /*# sourceMappingURL=styles.css.map */

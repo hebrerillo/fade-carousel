@@ -6,7 +6,7 @@ function UnderlineSlide()
     this.list = this.navigationMenu.querySelector('.nav__list');
     this.underline = this.navigationMenu.querySelector('.nav__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
-    this.carousel = new FFCarousel('.ffcarousel', {delay : 5000});
+    this.carousel = new FCarousel();
     this.init();
 }
 
@@ -87,4 +87,4 @@ UnderlineSlide.prototype.moveUnderline = function (menuItemElement)
     menuItemElement.classList.add('nav__list__link--active');
 };
 
-new UnderlineSlide();
+new FCarousel();
