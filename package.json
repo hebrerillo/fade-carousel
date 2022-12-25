@@ -1,0 +1,20 @@
+{
+  "name": "ffcarousel",
+  "version": "0.1.0",
+  "description": "A fading carousel",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "author": "Jesus Romero",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-core": "^4.5.0",
+    "karma": "^6.4.1",
+    "karma-jasmine": "^5.1.0",
+    "puppeteer": "^19.4.1",
+    "karma-chrome-launcher": "^3.1.1"
+  },
+  "dependencies": {
+  }
+}

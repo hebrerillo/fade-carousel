@@ -10,12 +10,15 @@ function FFCarousel(carouselClass, options = {})
 {
     this.nextSlide = null;
     this.currentSlide = null;
-    this.carousel = document.querySelector(carouselClass);
-    this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
     this.delay = options.delay; //The time out for the fade in/fade out effect, in milliseconds
     this.intervalID = null;
     this.fading = false; //Whether there is a fade in/fade out animation in progress.
-    this.init();
+    this.carousel = document.querySelector(carouselClass);
+    if (this.carousel)
+    {
+        this.carousel.addEventListener('transitionend', this.carouselTransitionEndCB.bind(this));
+        this.init();
+    }
 }
 
 /**
@@ -202,13 +205,4 @@ FFCarousel.prototype.setIndexes = function ()
     {
         carouselChildren[i].dataset.carouselItem = i;
     }
-};
-
-/**
- * 
- * @returns {String} The current version of the Fading carousel.
- */
-FFCarousel.prototype.getVersion = function ()
-{
-    return "0.1.0";
 };
