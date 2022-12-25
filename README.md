@@ -1,0 +1,1 @@
+# A fading carousel implemented in pure JavaScript
