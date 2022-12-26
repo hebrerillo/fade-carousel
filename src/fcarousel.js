@@ -68,7 +68,6 @@ function FCarousel(options = {})
      */
     function getActualSlideNumber(slideNumber)
     {
-        slideNumber = Number(slideNumber);
         if (slideNumber >= carousel.children.length)
         {
             return 0;
@@ -91,6 +90,12 @@ function FCarousel(options = {})
      */
     function gotoSlide(slideNumber, doTransition = true)
     {
+        slideNumber = Number(slideNumber);
+        if (slideNumber === currentSlideNumber)
+        {
+            return;
+        }
+
         currentSlideNumber = getActualSlideNumber(slideNumber);
         if (!doTransition)
         {

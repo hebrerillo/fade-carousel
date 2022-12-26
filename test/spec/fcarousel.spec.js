@@ -49,4 +49,11 @@ describe('Fading carousel', function ()
         this.fcarousel.gotoPreviousSlide();
         checkCarouselItemIsOpaque(this.carouselItems, this.carouselItems.length - 1, this.opaqueClass, this.itemsClass);
     });
+
+    it('should retain the current slide when trying to show the current slide', function ()
+    {
+        checkCarouselItemIsOpaque(this.carouselItems, 0, this.opaqueClass, this.itemsClass);
+        this.fcarousel.gotoSlide(0);
+        checkCarouselItemIsOpaque(this.carouselItems, 0, this.opaqueClass, this.itemsClass);
+    });
 });
