@@ -67,7 +67,7 @@ UnderlineSlide.prototype.gotoMenuItem = function (menuItemElement, animate = tru
     }
 
     this.moveUnderline(menuItemElement);
-    this.carousel.gotoSlide(menuItemElement.dataset.carouselTargetItem, animate);
+    this.carousel.gotoSlide(+menuItemElement.dataset.carouselTargetItem);
     if (!animate)
     {
         this.underline.offsetHeight;
@@ -87,4 +87,4 @@ UnderlineSlide.prototype.moveUnderline = function (menuItemElement)
     menuItemElement.classList.add('nav__list__link--active');
 };
 
-new FCarousel();
+const underline = new UnderlineSlide();
