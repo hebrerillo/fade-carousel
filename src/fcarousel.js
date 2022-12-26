@@ -14,7 +14,7 @@ function FCarousel(options = {})
     let carousel = document.querySelector(options.carousel || '#carousel');
     let itemsClass = options.itemsClass || 'fcarousel-item';
     let opaqueClass = options.opaqueClass || 'fcarousel-item--opaque';
-    let fadeInDelay = options.fadeInDuration || 300;
+    let fadeInDelay = options.fadeInDuration || 12300;
     let currentSlideNumber = null;
     init();
 
@@ -26,7 +26,7 @@ function FCarousel(options = {})
     {
         carousel.style.position = 'relative';
         addItemsClass();
-        gotoSlide(0);
+        gotoSlide(0, false);
     }
 
     /**
@@ -87,11 +87,24 @@ function FCarousel(options = {})
      * the first slide.
      * 
      * @param {number} slideNumber The number of the slide to be shown.
+     * @param {boolean} doTransition Whether there should be a transition effect.
      */
-    function gotoSlide(slideNumber)
+    function gotoSlide(slideNumber, doTransition = true)
     {
         currentSlideNumber = getActualSlideNumber(slideNumber);
+        if (!doTransition)
+        {
+            carousel.children[currentSlideNumber].style.transition = 'none';
+        }
+
         showSlideNumber(currentSlideNumber);
+
+        if (!doTransition)
+        {
+            carousel.children[currentSlideNumber].offsetHeight;
+            carousel.children[currentSlideNumber].style.transition = '';
+            carousel.children[currentSlideNumber].style.transitionDuration = fadeInDelay + 'ms';
+        }
     }
 
     /**
