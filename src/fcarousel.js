@@ -33,7 +33,7 @@ function FCarousel(options = {})
      */
     function addItemsClass()
     {
-        for(let i = 0; i < items.length; ++i)
+        for(let i = 0; i < carousel.children.length; ++i)
         {
             items[i].classList.add(itemsClass);
         }
@@ -41,12 +41,25 @@ function FCarousel(options = {})
 
     /**
      * Hides the current slide and shows the slide with number 'slideNumber'.
+     * If 'slideNumber' is greater than the number of elements in the carousel or is negative, it will default to
+     * the first slide.
      * 
-     * @param {type} slideNumber The next slide to be shown
+     * @param {number} slideNumber The number of the slide to be shown.
      */
     function gotoSlide(slideNumber)
     {
-        items[slideNumber].classList.add(opaqueClass);
+        let actualSlideNumber = (slideNumber >= items.length || slideNumber < 0) ? 0 : slideNumber;
+        for(let i = 0; i < carousel.children.length; ++i)
+        {
+            if (i === actualSlideNumber)
+            {
+                items[actualSlideNumber].classList.add(opaqueClass);
+            }
+            else
+            {
+                items[i].classList.remove(opaqueClass);
+            }
+        }
     }
 
     return {
