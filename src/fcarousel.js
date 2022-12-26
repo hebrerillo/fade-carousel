@@ -13,7 +13,6 @@ function FCarousel(options = {})
     let carousel = document.querySelector(options.carousel || '#carousel');
     let itemsClass = options.itemsClass || 'fcarousel-item';
     let opaqueClass = options.opaqueClass || 'fcarousel-item--opaque';
-    let items = carousel.children;
     let currentSlideNumber = null;
     init();
 
@@ -35,7 +34,7 @@ function FCarousel(options = {})
     {
         for(let i = 0; i < carousel.children.length; ++i)
         {
-            items[i].classList.add(itemsClass);
+            carousel.children[i].classList.add(itemsClass);
         }
     }
 
@@ -48,16 +47,16 @@ function FCarousel(options = {})
      */
     function gotoSlide(slideNumber)
     {
-        currentSlideNumber = (slideNumber >= items.length || slideNumber < 0) ? 0 : slideNumber;
+        currentSlideNumber = (slideNumber >= carousel.children.length || slideNumber < 0) ? 0 : slideNumber;
         for(let i = 0; i < carousel.children.length; ++i)
         {
             if (i === currentSlideNumber)
             {
-                items[currentSlideNumber].classList.add(opaqueClass);
+                carousel.children[currentSlideNumber].classList.add(opaqueClass);
             }
             else
             {
-                items[i].classList.remove(opaqueClass);
+                carousel.children[i].classList.remove(opaqueClass);
             }
         }
     }
