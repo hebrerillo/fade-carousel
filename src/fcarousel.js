@@ -14,7 +14,7 @@ function FCarousel(options = {})
     let itemsClass = options.itemsClass || 'fcarousel-item';
     let opaqueClass = options.opaqueClass || 'fcarousel-item--opaque';
     let items = carousel.children;
-
+    let currentSlideNumber = null;
     init();
 
     /**
@@ -48,12 +48,12 @@ function FCarousel(options = {})
      */
     function gotoSlide(slideNumber)
     {
-        let actualSlideNumber = (slideNumber >= items.length || slideNumber < 0) ? 0 : slideNumber;
+        currentSlideNumber = (slideNumber >= items.length || slideNumber < 0) ? 0 : slideNumber;
         for(let i = 0; i < carousel.children.length; ++i)
         {
-            if (i === actualSlideNumber)
+            if (i === currentSlideNumber)
             {
-                items[actualSlideNumber].classList.add(opaqueClass);
+                items[currentSlideNumber].classList.add(opaqueClass);
             }
             else
             {
@@ -62,7 +62,16 @@ function FCarousel(options = {})
         }
     }
 
+    /**
+     * Shows the next slide.
+     */
+    function gotoNextSlide()
+    {
+        gotoSlide(currentSlideNumber + 1);
+    }
+
     return {
-      'gotoSlide' : gotoSlide
+      'gotoSlide' : gotoSlide,
+      'gotoNextSlide' : gotoNextSlide
     };
 }
