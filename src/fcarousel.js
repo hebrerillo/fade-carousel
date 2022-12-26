@@ -47,7 +47,19 @@ function FCarousel(options = {})
      */
     function gotoSlide(slideNumber)
     {
-        currentSlideNumber = (slideNumber >= carousel.children.length || slideNumber < 0) ? 0 : slideNumber;
+        if (slideNumber >= carousel.children.length)
+        {
+            currentSlideNumber = 0;
+        }
+        else if (slideNumber < 0)
+        {
+            currentSlideNumber = carousel.children.length - 1;
+        }
+        else
+        {
+            currentSlideNumber = slideNumber;
+        }
+
         for(let i = 0; i < carousel.children.length; ++i)
         {
             if (i === currentSlideNumber)
@@ -62,6 +74,14 @@ function FCarousel(options = {})
     }
 
     /**
+     * 
+     */
+    function gotoPreviousSlide()
+    {
+        gotoSlide(currentSlideNumber - 1);
+    }
+
+    /**
      * Shows the next slide.
      */
     function gotoNextSlide()
@@ -71,6 +91,7 @@ function FCarousel(options = {})
 
     return {
       'gotoSlide' : gotoSlide,
-      'gotoNextSlide' : gotoNextSlide
+      'gotoNextSlide' : gotoNextSlide,
+      'gotoPreviousSlide' : gotoPreviousSlide
     };
 }

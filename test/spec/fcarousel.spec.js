@@ -20,23 +20,33 @@ describe('Fading carousel', function ()
         checkCarouselItemIsOpaque(this.carouselItems, 0, this.opaqueClass, this.itemsClass);
     });
     
-    it('should show the first slide when trying to go to a negative slide number or beyond the number of slides', function ()
+    it('should show the first slide when trying to go to a slide number greater than the number of slides', function ()
     {
         this.fcarousel.gotoSlide(4000);
         checkCarouselItemIsOpaque(this.carouselItems, 0, this.opaqueClass, this.itemsClass);
-        this.fcarousel.gotoSlide(-3);
-        checkCarouselItemIsOpaque(this.carouselItems, 0, this.opaqueClass, this.itemsClass);
     });
+    
+    it('should show the last slide when trying to go to a slide negative number', function ()
+    {
+        this.fcarousel.gotoSlide(-3);
+        checkCarouselItemIsOpaque(this.carouselItems, this.carouselItems.length - 1, this.opaqueClass, this.itemsClass);
+    })
     
     it('should show the desired slide number', function ()
     {
         this.fcarousel.gotoSlide(3);
-        expect(this.carouselItems[3].classList.contains(this.opaqueClass)).toBe(true);
+        checkCarouselItemIsOpaque(this.carouselItems, 3, this.opaqueClass, this.itemsClass);
     });
     
     it('should show the next desired slide', function ()
     {
         this.fcarousel.gotoNextSlide();
-        expect(this.carouselItems[1].classList.contains('fcarousel-item--opaque')).toBe(true);
+        checkCarouselItemIsOpaque(this.carouselItems, 1, this.opaqueClass, this.itemsClass);
+    });
+
+    it('should show the previous desired slide', function ()
+    {
+        this.fcarousel.gotoPreviousSlide();
+        checkCarouselItemIsOpaque(this.carouselItems, this.carouselItems.length - 1, this.opaqueClass, this.itemsClass);
     });
 });
