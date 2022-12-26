@@ -8,14 +8,19 @@
  * @param {string} options.itemsClass [options.itemsClass='fcarousel-item'] The CSS selector of the carousel items.
  * @param {string} options.opaqueClass [options.opaqueClass='fcarousel-item--opaque'] The CSS selector that will make the carousel items opaque and visible.
  * @param {string} options.fadeinDuration [options.fadeinDelay=300] Specifies the duration over the fades effects should occur, in milliseconds.
+ * @param {string} options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides, 
+ *                 just pass 0. If the interval delay is less than 'fadeInDuration', then its value will be reduced to 'fadeInDuration'.
  */
 function FCarousel(options = {})
 {
     let carousel = document.querySelector(options.carousel || '#carousel');
     let itemsClass = options.itemsClass || 'fcarousel-item';
     let opaqueClass = options.opaqueClass || 'fcarousel-item--opaque';
-    let fadeInDelay = options.fadeInDuration || 12300;
+    let fadeInDuration = options.fadeInDuration || 1000;
     let currentSlideNumber = null;
+    let intervalDelay = calculateActualIntervalDelay(options.intervalDelay, fadeInDuration);
+    let intervalID = null;
+
     init();
 
     /**
@@ -27,6 +32,43 @@ function FCarousel(options = {})
         carousel.style.position = 'relative';
         addItemsClass();
         gotoSlide(0, false);
+        startInterval();
+    }
+
+    /**
+     * Starts the autoplaying of slides every 'intervalDelay' milliseconds.
+     */
+    function startInterval()
+    {
+        if (intervalDelay <= 0)
+        {
+            return;
+        }
+        intervalID = window.setInterval(gotoNextSlide.bind(this), intervalDelay);
+    }
+    
+    /**
+     * Calculates the interval delay before starting the autoplay of slides, taking into accout that
+     * the interval delay cannot be smaller than the duration of the fade-in animation.
+     * 
+     * @param {Number} intervalDelay The desired interval delay of slides.
+     * @param {Number} fadeInDuration The duration of the fade-in animation
+     * @returns {Number} The actual interval delay.
+     */
+    function calculateActualIntervalDelay(intervalDelay, fadeInDuration)
+    {
+        intervalDelay = intervalDelay ?? 1000;
+
+        if (intervalDelay > 0 && intervalDelay < fadeInDuration)
+        {
+            return fadeInDuration;
+        }
+        else if (options.intervalDelay > 0)
+        {
+            return intervalDelay;
+        }
+
+        return intervalDelay;
     }
 
     /**
@@ -37,7 +79,7 @@ function FCarousel(options = {})
         for(let i = 0; i < carousel.children.length; ++i)
         {
             carousel.children[i].classList.add(itemsClass);
-            carousel.children[i].style.transitionDuration = fadeInDelay + 'ms';
+            carousel.children[i].style.transitionDuration = fadeInDuration + 'ms';
         }
     }
 
@@ -108,7 +150,7 @@ function FCarousel(options = {})
         {
             carousel.children[currentSlideNumber].offsetHeight;
             carousel.children[currentSlideNumber].style.transition = '';
-            carousel.children[currentSlideNumber].style.transitionDuration = fadeInDelay + 'ms';
+            carousel.children[currentSlideNumber].style.transitionDuration = fadeInDuration + 'ms';
         }
     }
 
