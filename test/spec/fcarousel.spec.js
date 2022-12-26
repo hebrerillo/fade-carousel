@@ -67,34 +67,28 @@ describe('Fading carousel', function ()
 
     describe('interval', function ()
     {
-        beforeEach(function ()
+        it('should show all the slides when playing an interval', async function ()
         {
-            this.options = {
+            let options = {
+                itemsClass: this.itemsClass,
+                opaqueClass: this.opaqueClass,
+                fadeInDuration: 50,
+                intervalDelay: 50
+            };
+
+            checkAllSlidesAreShowedInAnInterval(options);
+        });
+
+        it('should show all the slides when playing an interval which duration is smaller than the fade-in effect', async function ()
+        {
+            let options = {
                 itemsClass: this.itemsClass,
                 opaqueClass: this.opaqueClass,
                 fadeInDuration: 50,
                 intervalDelay: 10  //Forcing the interval delay to be reduced to the 'fadeInDuration'
             };
 
-            this.fcarousel = new FCarousel(this.options);
-            this.carouselItems = Array.from(document.querySelectorAll('.fcarousel-item'));
-        });
-
-        it('should show all the slides when playing an interval', async function ()
-        {
-            let promise = null;
-            this.carouselItems.forEach(async (item, index) =>
-            {
-                promise = new Promise(function (resolve, reject)
-                {
-                    setTimeout(resolve, 60);
-                });
-
-                await promise.then(() =>
-                {
-                    checkCarouselItemIsOpaque(this.carouselItems, index + 1, this.opaqueClass, this.itemsClass);
-                });
-            });
+            checkAllSlidesAreShowedInAnInterval(options);
         });
     });
 
