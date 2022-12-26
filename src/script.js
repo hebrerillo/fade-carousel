@@ -67,7 +67,7 @@ UnderlineSlide.prototype.gotoMenuItem = function (menuItemElement, animate = tru
     }
 
     this.moveUnderline(menuItemElement);
-    this.carousel.gotoSlide(+menuItemElement.dataset.carouselTargetItem);
+    this.carousel.gotoSlide(menuItemElement.dataset.carouselTargetItem);
     if (!animate)
     {
         this.underline.offsetHeight;
