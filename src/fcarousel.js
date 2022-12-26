@@ -14,28 +14,42 @@ function FCarousel(options = {})
     let itemsClass = options.itemsClass || 'fcarousel-item';
     let opaqueClass = options.opaqueClass || 'fcarousel-item--opaque';
     let items = carousel.children;
-    
-    let currentSlideIndex = 0;
-    
+
     init();
-    
+
+    /**
+     * Performs some initialization stuff.
+     * 
+     */
     function init()
     {
         carousel.style.position = 'relative';
-        goto(0);
+        addItemsClass();
+        gotoSlide(0);
     }
-    
-    function goto(slideNumber)
+
+    /**
+     * Adds the class 'itemsClass' to all the children of the carousel.
+     */
+    function addItemsClass()
+    {
+        for(let i = 0; i < items.length; ++i)
+        {
+            items[i].classList.add(itemsClass);
+        }
+    }
+
+    /**
+     * Hides the current slide and shows the slide with number 'slideNumber'.
+     * 
+     * @param {type} slideNumber The next slide to be shown
+     */
+    function gotoSlide(slideNumber)
     {
         items[slideNumber].classList.add(opaqueClass);
     }
-    
-    function getCurrentSlideIndex()
-    {
-        return currentSlideIndex;
-    }
-    
+
     return {
-      'getCurrentSlideIndex' : getCurrentSlideIndex
+      'gotoSlide' : gotoSlide
     };
 }
