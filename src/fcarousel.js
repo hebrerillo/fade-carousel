@@ -23,7 +23,7 @@ function FCarousel(options = {})
     let intervalDelay = calculateActualIntervalDelay(options.intervalDelay, fadeInDuration);
     let intervalID = null;
     let side = (options.side === "left" || options.side === "right") ? options.side : null;
-    let hideOverflow = options.hideOverflow || true;
+    let hideOverflow = options.hideOverflow ?? true;
 
     init();
 
@@ -89,9 +89,9 @@ function FCarousel(options = {})
      */
     function styleItems()
     {
-        if (hideOverflow)
+        if (!hideOverflow)
         {
-            carousel.classList.add('fcarousel--hidden');
+            carousel.classList.add('fcarousel--overflow-visible');
         }
 
         for(let i = 0; i < carousel.children.length; ++i)

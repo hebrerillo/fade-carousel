@@ -1,5 +1,9 @@
-.fcarousel--hidden {
+.fcarousel {
     overflow: hidden;
+}
+
+.fcarousel--overflow-visible {
+    overflow: visible;
 }
 
 .fcarousel-item {
