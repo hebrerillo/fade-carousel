@@ -5,8 +5,6 @@
  * 
  * @param {Object} options An object with initialization options for the carousel.
  * @param {string} options.carousel [options.carousel='carousel'] The CSS selector of the carousel container.
- * @param {string} options.itemsClass [options.itemsClass='fcarousel-item'] The CSS selector of the carousel items.
- * @param {string} options.opaqueClass [options.opaqueClass='fcarousel-item--opaque'] The CSS selector that will make the carousel items opaque and visible.
  * @param {string} options.fadeinDuration [options.fadeinDelay=300] Specifies the duration over the fades effects should occur, in milliseconds.
  * @param {string} options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides, 
  *                 just pass 0. If the interval delay is less than 'fadeInDuration', then its value will be reduced to 'fadeInDuration'.
@@ -14,8 +12,8 @@
 function FCarousel(options = {})
 {
     let carousel = document.querySelector(options.carousel || '#carousel');
-    let itemsClass = options.itemsClass || 'fcarousel-item';
-    let opaqueClass = options.opaqueClass || 'fcarousel-item--opaque';
+    let itemsClass = 'fcarousel-item';
+    let opaqueClass = 'fcarousel-item--opaque';
     let fadeInDuration = options.fadeInDuration || 1000;
     let currentSlideNumber = null;
     let intervalDelay = calculateActualIntervalDelay(options.intervalDelay, fadeInDuration);

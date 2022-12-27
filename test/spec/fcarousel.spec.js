@@ -14,8 +14,6 @@ describe('Fading carousel', function ()
         beforeEach(function ()
         {
             this.options = {
-                itemsClass: this.itemsClass,
-                opaqueClass: this.opaqueClass,
                 intervalDelay: 0
             };
             this.fcarousel = new FCarousel(this.options);
