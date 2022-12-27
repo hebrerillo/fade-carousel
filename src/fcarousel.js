@@ -30,7 +30,7 @@ function FCarousel(options = {})
     function init()
     {
         carousel.style.position = 'relative';
-        addItemsClass();
+        styleItems();
         gotoSlide(0, false, false);
     }
 
@@ -81,9 +81,9 @@ function FCarousel(options = {})
     }
 
     /**
-     * Adds the class 'itemsClass' to all the children of the carousel.
+     * Adds classes and inline styles to all the children of the carousel.
      */
-    function addItemsClass()
+    function styleItems()
     {
         for(let i = 0; i < carousel.children.length; ++i)
         {
