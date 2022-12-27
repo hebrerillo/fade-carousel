@@ -9,6 +9,7 @@
  * @param {string} options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides,
  *                 just pass 0. If the interval delay is less than 'fadeInDuration', then its value will be reduced to 'fadeInDuration'.
  * @param {function} options.onstart [options.onstart=null] Specifies a callback function that will be executed everytime before the carousel goes to a specific slide.
+ * @param {string} options.side [options.side=null] If set, specifies the side from which new slides will come from. Can take the values "left" or "right".
  */
 function FCarousel(options = {})
 {
@@ -20,6 +21,7 @@ function FCarousel(options = {})
     let currentSlideNumber = null;
     let intervalDelay = calculateActualIntervalDelay(options.intervalDelay, fadeInDuration);
     let intervalID = null;
+    let side = (options.side === "left" || options.side === "right") ? options.side : null;
 
     init();
 
@@ -89,6 +91,10 @@ function FCarousel(options = {})
         {
             carousel.children[i].classList.add(itemsClass);
             carousel.children[i].style.transitionDuration = fadeInDuration + 'ms';
+            if (side)
+            {
+                carousel.children[i].classList.add('fcarousel-item--' + side);
+            }
         }
     }
 

@@ -61,9 +61,13 @@ a {
         }
     }
     
-    .carousel {
-        width: 500px;
-        height: 400px;
+    .fcarousel {
+        width: 400px;
+        height: 300px;
+        img {
+            display: block;
+            width: 100%;
+        }
     }
 }
 

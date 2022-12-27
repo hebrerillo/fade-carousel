@@ -47,8 +47,11 @@ a {
       height: 100%;
       width: 0;
       transition: all var(--default-transition-time); }
-  .nav .carousel {
-    width: 500px;
-    height: 400px; }
+  .nav .fcarousel {
+    width: 400px;
+    height: 300px; }
+    .nav .fcarousel img {
+      display: block;
+      width: 100%; }
 
 /*# sourceMappingURL=styles.css.map */
