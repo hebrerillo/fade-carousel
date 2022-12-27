@@ -6,7 +6,13 @@ function UnderlineSlide()
     this.list = this.navigationMenu.querySelector('.nav__list');
     this.underline = this.navigationMenu.querySelector('.nav__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
-    this.carousel = new FCarousel({intervalDelay : 200});
+    let carouselOptions =
+            {
+                onstart: this.moveUnderlineByIndex.bind(this),
+                intervalDelay: 4000,
+                fadeInDuration: 4000
+            };
+    this.carousel = new FCarousel(carouselOptions);
     this.init();
 }
 
@@ -29,10 +35,10 @@ UnderlineSlide.prototype.gotoMenuItemCB = function (event)
 /**
  * Perform some initialization.
  */
-UnderlineSlide.prototype.init = function()
+UnderlineSlide.prototype.init = function ()
 {
     this.setIndexes();
-    this.gotoMenuItem(this.list.querySelector('.nav__list__link'), false);
+    this.moveUnderlineByIndex(0, false);
 };
 
 /**
@@ -41,7 +47,7 @@ UnderlineSlide.prototype.init = function()
  */
 UnderlineSlide.prototype.setIndexes = function ()
 {
-    this.list.querySelectorAll('.nav__list__link').forEach((element, index) => 
+    this.list.querySelectorAll('.nav__list__link').forEach((element, index) =>
     {
         element.dataset.carouselTargetItem = index;
     });
@@ -55,19 +61,18 @@ UnderlineSlide.prototype.setIndexes = function ()
  */
 UnderlineSlide.prototype.gotoMenuItem = function (menuItemElement, animate = true)
 {
-    if (!menuItemElement)
-    {
-        console.error("FFCarousel.gotoMenuItem - No menu item!");
-        return;
-    }
+    this.carousel.gotoSlide(menuItemElement.dataset.carouselTargetItem);
+};
 
+UnderlineSlide.prototype.moveUnderlineByIndex = function (menuItemIndex, animate = true)
+{
     if (!animate)
     {
         this.underline.style.transition = 'none';
     }
-
+    const menuItemElement = this.list.querySelector('.nav__list__link[data-index="' + menuItemIndex + '"]');
     this.moveUnderline(menuItemElement);
-    this.carousel.gotoSlide(menuItemElement.dataset.carouselTargetItem);
+
     if (!animate)
     {
         this.underline.offsetHeight;

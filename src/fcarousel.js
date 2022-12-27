@@ -1,13 +1,14 @@
 'use strict';
 
 /**
- * A carousel that shows and hides slides applying a fade-in/fade-out effect. 
+ * A carousel that shows and hides slides applying a fade-in/fade-out effect.
  * 
  * @param {Object} options An object with initialization options for the carousel.
  * @param {string} options.carousel [options.carousel='carousel'] The CSS selector of the carousel container.
- * @param {string} options.fadeinDuration [options.fadeinDelay=300] Specifies the duration over the fades effects should occur, in milliseconds.
- * @param {string} options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides, 
+ * @param {string} options.fadeInDuration [options.fadeinDelay=300] Specifies the duration over the fades effects should occur, in milliseconds.
+ * @param {string} options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides,
  *                 just pass 0. If the interval delay is less than 'fadeInDuration', then its value will be reduced to 'fadeInDuration'.
+ * @param {function} options.onstart [options.onstart=null] Specifies a callback function that will be executed everytime before the carousel goes to a specific slide.
  */
 function FCarousel(options = {})
 {
@@ -15,6 +16,7 @@ function FCarousel(options = {})
     let itemsClass = 'fcarousel-item';
     let opaqueClass = 'fcarousel-item--opaque';
     let fadeInDuration = options.fadeInDuration || 1000;
+    let onstart = options.onstart || null;
     let currentSlideNumber = null;
     let intervalDelay = calculateActualIntervalDelay(options.intervalDelay, fadeInDuration);
     let intervalID = null;
@@ -29,7 +31,7 @@ function FCarousel(options = {})
     {
         carousel.style.position = 'relative';
         addItemsClass();
-        gotoSlide(0, false);
+        gotoSlide(0, false, false);
         startInterval();
     }
 
@@ -84,9 +86,15 @@ function FCarousel(options = {})
     /**
      * Shows the slide with index 'slideNumber' and hides the rest of the slides.
      * @param {number} slideNumber The number of the slide to be shown.
+     * @param {boolean} doOnStartCallback Whether the 'onstart' callback should be executed.
      */
-    function showSlideNumber(slideNumber)
-    {
+    function showSlideNumber(slideNumber, doOnStartCallback = true)
+    {        
+        if (onstart && doOnStartCallback)
+        {
+            onstart(currentSlideNumber, Array.from(carousel.children));
+        }
+
         for(let i = 0; i < carousel.children.length; ++i)
         {
             if (i === slideNumber)
@@ -127,8 +135,9 @@ function FCarousel(options = {})
      * 
      * @param {number} slideNumber The number of the slide to be shown.
      * @param {boolean} doTransition Whether there should be a transition effect.
+     * @param {boolean} doOnStartCallback Whether the 'onstart' callback should be executed.
      */
-    function gotoSlide(slideNumber, doTransition = true)
+    function gotoSlide(slideNumber, doTransition = true, doOnStartCallback = true)
     {
         slideNumber = Number(slideNumber);
         if (slideNumber === currentSlideNumber)
@@ -142,7 +151,7 @@ function FCarousel(options = {})
             carousel.children[currentSlideNumber].style.transition = 'none';
         }
 
-        showSlideNumber(currentSlideNumber);
+        showSlideNumber(currentSlideNumber, doOnStartCallback);
 
         if (!doTransition)
         {

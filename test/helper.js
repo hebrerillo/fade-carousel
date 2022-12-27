@@ -2,10 +2,10 @@
  * Checks that the carousel item with index 'childIndex' is opaque, and the rest of the 
  * carousel items are not.
  * 
- * @param {type} itemsArray
- * @param {type} childIndex
- * @param {type} opaqueClass
- * @param {type} itemsClass
+ * @param {Array} itemsArray The array of carousel items.
+ * @param {type} childIndex  The index of the item that should be opaque.
+ * @param {type} opaqueClass The class of the carousel opaque item.
+ * @param {type} itemsClass  The class of the carousel items.
  */
 function checkCarouselItemIsOpaque(itemsArray, childIndex, opaqueClass, itemsClass)
 {

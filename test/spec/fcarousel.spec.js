@@ -65,7 +65,7 @@ describe('Fading carousel', function ()
 
     describe('interval', function ()
     {
-        it('should show all the slides when playing an interval', async function ()
+        it('should show all the slides when playing an interval', function ()
         {
             let options = {
                 itemsClass: this.itemsClass,
@@ -77,7 +77,7 @@ describe('Fading carousel', function ()
             checkAllSlidesAreShowedInAnInterval(options);
         });
 
-        it('should show all the slides when playing an interval which duration is smaller than the fade-in effect', async function ()
+        it('should show all the slides when playing an interval which duration is smaller than the fade-in effect', function ()
         {
             let options = {
                 itemsClass: this.itemsClass,
@@ -88,6 +88,46 @@ describe('Fading carousel', function ()
 
             checkAllSlidesAreShowedInAnInterval(options);
         });
+        
+        it('should execute all callbacks when playing an interval', function (done)
+        {
+            const callback = function(index, itemsArray)
+            {
+                const dataIndex = Number(itemsArray[index].dataset.index);
+                expect(dataIndex).toBe(index);
+                if (index === (itemsArray.length - 1))
+                {
+                    done();
+                }
+            };
+
+            let options = {
+                fadeInDuration: 50,
+                intervalDelay: 50,
+                onstart: callback
+            };
+
+            new FCarousel(options);
+        });
+
+        it('should execute a callback when going to a specific slide', function ()
+        {
+            const slideToGo = 1;
+            const callback = function(index)
+            {
+                debugger;
+                expect(index).toBe(slideToGo);
+            };
+
+            let options = {
+                intervalDelay: 0,
+                onstart: callback
+            };
+
+            let carousel = new FCarousel(options);
+            carousel.gotoSlide(slideToGo, false);
+        });
+        
     });
 
 });
