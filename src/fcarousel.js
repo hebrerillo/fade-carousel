@@ -3,13 +3,14 @@
 /**
  * A carousel that shows and hides slides applying a fade-in/fade-out effect.
  * 
- * @param {Object} options An object with initialization options for the carousel.
- * @param {string} options.carousel [options.carousel='carousel'] The CSS selector of the carousel container.
- * @param {string} options.fadeInDuration [options.fadeinDelay=300] Specifies the duration over the fades effects should occur, in milliseconds.
- * @param {string} options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides,
- *                 just pass 0. If the interval delay is less than 'fadeInDuration', then its value will be reduced to 'fadeInDuration'.
+ * @param {Object}   options An object with initialization options for the carousel.
+ * @param {string}   options.carousel [options.carousel='carousel'] The CSS selector of the carousel container.
+ * @param {string}   options.fadeInDuration [options.fadeinDelay=300] Specifies the duration over the fades effects should occur, in milliseconds.
+ * @param {string}   options.intervalDelay [options.intervalDelay=2000] specifies the duration to wait before moving to the next slide. If you do not want an autoplay of slides,
+ *                   just pass 0. If the interval delay is less than 'fadeInDuration', then its value will be reduced to 'fadeInDuration'.
  * @param {function} options.onstart [options.onstart=null] Specifies a callback function that will be executed everytime before the carousel goes to a specific slide.
- * @param {string} options.side [options.side=null] If set, specifies the side from which new slides will come from. Can take the values "left" or "right".
+ * @param {string}   options.side [options.side=null] If set, specifies the side from which new slides will come from. Can take the values "left" or "right".
+ * @param {bool}     options.hideOverflow [options.hideOverflow=true] Whether the content that overflows the carousel should be hidden.
  */
 function FCarousel(options = {})
 {
@@ -22,6 +23,7 @@ function FCarousel(options = {})
     let intervalDelay = calculateActualIntervalDelay(options.intervalDelay, fadeInDuration);
     let intervalID = null;
     let side = (options.side === "left" || options.side === "right") ? options.side : null;
+    let hideOverflow = options.hideOverflow || true;
 
     init();
 
@@ -87,6 +89,11 @@ function FCarousel(options = {})
      */
     function styleItems()
     {
+        if (hideOverflow)
+        {
+            carousel.classList.add('fcarousel--hidden');
+        }
+
         for(let i = 0; i < carousel.children.length; ++i)
         {
             carousel.children[i].classList.add(itemsClass);
