@@ -9,8 +9,8 @@ function UnderlineSlide()
     let carouselOptions =
             {
                 onstart: this.moveUnderlineByIndex.bind(this),
-                intervalDelay: 4000,
-                fadeInDuration: 4000
+                intervalDelay: 6000,
+                fadeInDuration: 500
             };
     this.carousel = new FCarousel(carouselOptions);
     this.init();
@@ -90,6 +90,11 @@ UnderlineSlide.prototype.moveUnderline = function (menuItemElement)
     this.underline.style.transform = 'translateX(' + (menuItemElement.offsetLeft + 'px') + ')';
     this.underline.style.width = menuItemElement.offsetWidth + 'px';
     menuItemElement.classList.add('nav__list__link--active');
+};
+
+UnderlineSlide.prototype.getCarousel = function()
+{
+  return this.carousel;  
 };
 
 const underline = new UnderlineSlide();

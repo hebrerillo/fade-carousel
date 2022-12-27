@@ -32,7 +32,6 @@ function FCarousel(options = {})
         carousel.style.position = 'relative';
         addItemsClass();
         gotoSlide(0, false, false);
-        startInterval();
     }
 
     /**
@@ -40,13 +39,23 @@ function FCarousel(options = {})
      */
     function startInterval()
     {
-        if (intervalDelay <= 0)
+        if (intervalDelay <= 0 || intervalID)
         {
             return;
         }
+
         intervalID = window.setInterval(gotoNextSlide.bind(this), intervalDelay);
     }
-    
+
+    function cancelInterval()
+    {
+        if (intervalID)
+        {
+            window.clearInterval(intervalID);
+            intervalID = null;
+        }
+    }
+
     /**
      * Calculates the interval delay before starting the autoplay of slides, taking into accout that
      * the interval delay cannot be smaller than the duration of the fade-in animation.
@@ -139,9 +148,11 @@ function FCarousel(options = {})
      */
     function gotoSlide(slideNumber, doTransition = true, doOnStartCallback = true)
     {
+        cancelInterval();
         slideNumber = Number(slideNumber);
         if (slideNumber === currentSlideNumber)
         {
+            startInterval();
             return;
         }
 
@@ -159,6 +170,7 @@ function FCarousel(options = {})
             carousel.children[currentSlideNumber].style.transition = '';
             carousel.children[currentSlideNumber].style.transitionDuration = fadeInDuration + 'ms';
         }
+        startInterval();
     }
 
     /**
