@@ -6,15 +6,34 @@ function UnderlineSlide()
     this.list = this.navigationMenu.querySelector('.nav__list');
     this.underline = this.navigationMenu.querySelector('.nav__underline');
     this.list.addEventListener('click', this.gotoMenuItemCB.bind(this));
+    this.navigationMenu.querySelector('.left-button').addEventListener('click', this.gotoPreviousSlide.bind(this));
+    this.navigationMenu.querySelector('.right-button').addEventListener('click', this.gotoNextSlide.bind(this));
     let carouselOptions =
             {
+                carousel: '#regularCarousel',
                 onstart: this.moveUnderlineByIndex.bind(this),
-                intervalDelay: 2000,
+                intervalDelay: 0,
                 fadeInDuration: 1200
             };
     this.carousel = new FCarousel(carouselOptions);
     this.init();
 }
+
+/**
+ * Goes to the next slide.
+ */
+UnderlineSlide.prototype.gotoNextSlide = function ()
+{
+    this.carousel.gotoNextSlide();
+};
+
+/**
+ * Goes to the previous slide.
+ */
+UnderlineSlide.prototype.gotoPreviousSlide = function ()
+{
+    this.carousel.gotoPreviousSlide();
+};
 
 /**
  * The callback executed when a list item is clicked

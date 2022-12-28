@@ -1,0 +1,70 @@
+:root {
+    --default-transition-time: .4s;
+    --default-bg-color: #555;
+    --default-text-color: #fff;
+    --body-padding-left: 1rem;
+    --body-padding-right: 1rem;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;  /*1 rem = 10px;*/
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--default-bg-color);
+    color: var(--default-text-color);
+    font-size: 1.8rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-container {
+    margin-top: 30px;
+    padding-left: var(--body-padding-left);
+    padding-right: var(--body-padding-right);
+}
+
+.section-carousel {
+    padding-top: 7rem;
+}
+
+.section-carousel:nth-child(1)
+{
+    padding-top: 4rem
+}
+
+.fcarousel-item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fcarousel-item:nth-child(1) {
+    background-image: url('../img/king.jpg');
+}
+
+.fcarousel-item:nth-child(2) {
+    background-image: url('../img/john.jpg');
+}
+
+.fcarousel-item:nth-child(3) {
+    background-image: url('../img/mark.jpg');
+}
+
+.fcarousel-item:nth-child(4) {
+    background-image: url('../img/beyonce.jpg');
+}
+
+.fcarousel-item:nth-child(5) {
+    background-image: url('../img/lisa.jpg');
+}

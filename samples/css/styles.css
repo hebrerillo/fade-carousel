@@ -1,5 +1,9 @@
 :root {
-  --default-transition-time: .4s; }
+  --default-transition-time: .4s;
+  --default-bg-color: #555;
+  --default-text-color: #fff;
+  --body-padding-left: 1rem;
+  --body-padding-right: 1rem; }
 
 html {
   box-sizing: border-box;
@@ -12,17 +16,18 @@ html {
   margin: 0; }
 
 body {
-  background-color: #444;
-  color: #fff; }
+  background-color: var(--default-bg-color);
+  color: var(--default-text-color);
+  font-size: 1.8rem; }
 
 a {
   text-decoration: none;
   color: inherit; }
 
 .main-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px; }
+  margin-top: 30px;
+  padding-left: var(--body-padding-left);
+  padding-right: var(--body-padding-right); }
 
 .section-carousel {
   padding-top: 7rem; }
@@ -30,47 +35,70 @@ a {
 .section-carousel:nth-child(1) {
   padding-top: 4rem; }
 
-.nav {
-  font-size: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.6rem; }
-  .nav .nav__list {
+.fcarousel-item {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.fcarousel-item:nth-child(1) {
+  background-image: url("../img/king.jpg"); }
+
+.fcarousel-item:nth-child(2) {
+  background-image: url("../img/john.jpg"); }
+
+.fcarousel-item:nth-child(3) {
+  background-image: url("../img/mark.jpg"); }
+
+.fcarousel-item:nth-child(4) {
+  background-image: url("../img/beyonce.jpg"); }
+
+.fcarousel-item:nth-child(5) {
+  background-image: url("../img/lisa.jpg"); }
+
+.regular-carousel .nav {
+  display: grid;
+  row-gap: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "list      list" "underline underline" "carousel  carousel" "leftArrow rightArrow"; }
+  .regular-carousel .nav .nav__list {
+    grid-area: list;
     position: relative;
     list-style: none;
     display: flex;
-    column-gap: 6rem; }
-    .nav .nav__list .nav__list__link {
+    justify-content: space-between; }
+    .regular-carousel .nav .nav__list .nav__list__link {
       cursor: pointer; }
-    .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
+    .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
       opacity: 0.75; }
-  .nav .nav__underline-container {
+  .regular-carousel .nav .nav__underline-container {
+    grid-area: underline;
     position: relative;
-    height: 0.4rem; }
-    .nav .nav__underline-container .nav__underline {
+    height: 0.4rem;
+    margin-bottom: .8rem; }
+    .regular-carousel .nav .nav__underline-container .nav__underline {
       position: absolute;
-      background-color: #fff;
+      background-color: var(--default-text-color);
       height: 100%;
       width: 0;
       transition: all var(--default-transition-time); }
-  .nav .fcarousel {
-    height: 300px; }
-    .nav .fcarousel img {
+  .regular-carousel .nav .fcarousel {
+    grid-area: carousel;
+    height: 300px;
+    margin-bottom: 2.5rem; }
+    .regular-carousel .nav .fcarousel img {
       display: block;
-      width: 100%; }
-    .nav .fcarousel .fcarousel-item {
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat; }
-    .nav .fcarousel .fcarousel-item:nth-child(1) {
-      background-image: url("../img/king.jpg"); }
-    .nav .fcarousel .fcarousel-item:nth-child(2) {
-      background-image: url("../img/john.jpg"); }
-    .nav .fcarousel .fcarousel-item:nth-child(3) {
-      background-image: url("../img/mark.jpg"); }
-    .nav .fcarousel .fcarousel-item:nth-child(4) {
-      background-image: url("../img/beyonce.jpg"); }
-    .nav .fcarousel .fcarousel-item:nth-child(5) {
-      background-image: url("../img/lisa.jpg"); }
+      height: 100%; }
+  .regular-carousel .nav .right-button {
+    grid-area: rightArrow; }
+  .regular-carousel .nav .left-button {
+    grid-area: leftArrow; }
+  .regular-carousel .nav .right-button, .regular-carousel .nav .left-button {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .regular-carousel .nav .right-button svg, .regular-carousel .nav .left-button svg {
+      width: 8rem;
+      cursor: pointer; }
 
 /*# sourceMappingURL=styles.css.map */
