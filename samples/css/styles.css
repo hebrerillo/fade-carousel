@@ -63,7 +63,8 @@ a {
     list-style: none;
     display: flex;
     justify-content: space-between;
-    padding: 0 1.5rem; }
+    padding: 0 1.5rem;
+    gap: 1rem; }
     .regular-carousel .nav .nav__list .nav__list__link {
       cursor: pointer; }
     .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
