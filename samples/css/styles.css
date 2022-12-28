@@ -12,7 +12,7 @@ html {
   margin: 0; }
 
 body {
-  background-color: #555;
+  background-color: #444;
   color: #fff; }
 
 a {
@@ -24,6 +24,12 @@ a {
   justify-content: center;
   margin-top: 30px; }
 
+.section-carousel {
+  padding-top: 7rem; }
+
+.section-carousel:nth-child(1) {
+  padding-top: 4rem; }
+
 .nav {
   font-size: 1.8rem;
   display: flex;
@@ -33,7 +39,7 @@ a {
     position: relative;
     list-style: none;
     display: flex;
-    column-gap: 4rem; }
+    column-gap: 6rem; }
     .nav .nav__list .nav__list__link {
       cursor: pointer; }
     .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
@@ -48,10 +54,23 @@ a {
       width: 0;
       transition: all var(--default-transition-time); }
   .nav .fcarousel {
-    width: 400px;
     height: 300px; }
     .nav .fcarousel img {
       display: block;
       width: 100%; }
+    .nav .fcarousel .fcarousel-item {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat; }
+    .nav .fcarousel .fcarousel-item:nth-child(1) {
+      background-image: url("../img/king.jpg"); }
+    .nav .fcarousel .fcarousel-item:nth-child(2) {
+      background-image: url("../img/john.jpg"); }
+    .nav .fcarousel .fcarousel-item:nth-child(3) {
+      background-image: url("../img/mark.jpg"); }
+    .nav .fcarousel .fcarousel-item:nth-child(4) {
+      background-image: url("../img/beyonce.jpg"); }
+    .nav .fcarousel .fcarousel-item:nth-child(5) {
+      background-image: url("../img/lisa.jpg"); }
 
 /*# sourceMappingURL=styles.css.map */

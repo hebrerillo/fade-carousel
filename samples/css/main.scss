@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    background-color: #555;
+    background-color: #444;
     color: #fff;
 }
 
@@ -29,6 +29,15 @@ a {
     margin-top: 30px;
 }
 
+.section-carousel {
+    padding-top: 7rem;
+}
+
+.section-carousel:nth-child(1)
+{
+    padding-top: 4rem
+}
+
 .nav {
     font-size: 1.8rem;
     display: flex;
@@ -38,7 +47,7 @@ a {
         position: relative;
         list-style: none;
         display: flex;
-        column-gap: 4rem;
+        column-gap: 6rem;
         
         .nav__list__link {
             cursor: pointer;
@@ -60,13 +69,43 @@ a {
             transition: all var(--default-transition-time);
         }
     }
-    
+
     .fcarousel {
-        width: 400px;
         height: 300px;
         img {
             display: block;
             width: 100%;
+        }
+        
+        .fcarousel-item {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .fcarousel-item:nth-child(1)
+        {
+            background-image: url('../img/king.jpg');
+        }
+        
+        .fcarousel-item:nth-child(2)
+        {
+            background-image: url('../img/john.jpg');
+        }
+        
+        .fcarousel-item:nth-child(3)
+        {
+            background-image: url('../img/mark.jpg');
+        }
+        
+        .fcarousel-item:nth-child(4)
+        {
+            background-image: url('../img/beyonce.jpg');
+        }
+        
+        .fcarousel-item:nth-child(5)
+        {
+            background-image: url('../img/lisa.jpg');
         }
     }
 }
