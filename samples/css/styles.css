@@ -1,9 +1,7 @@
 :root {
   --default-transition-time: .4s;
   --default-bg-color: #555;
-  --default-text-color: #fff;
-  --body-padding-left: 1rem;
-  --body-padding-right: 1rem; }
+  --default-text-color: #fff; }
 
 html {
   box-sizing: border-box;
@@ -18,16 +16,14 @@ html {
 body {
   background-color: var(--default-bg-color);
   color: var(--default-text-color);
-  font-size: 1.8rem; }
+  font-size: 1.5rem; }
 
 a {
   text-decoration: none;
   color: inherit; }
 
 .main-container {
-  margin-top: 30px;
-  padding-left: var(--body-padding-left);
-  padding-right: var(--body-padding-right); }
+  margin-top: 30px; }
 
 .section-carousel {
   padding-top: 7rem; }
@@ -66,7 +62,8 @@ a {
     position: relative;
     list-style: none;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    padding: 0 1.5rem; }
     .regular-carousel .nav .nav__list .nav__list__link {
       cursor: pointer; }
     .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
@@ -98,7 +95,7 @@ a {
     align-items: center;
     justify-content: center; }
     .regular-carousel .nav .right-button svg, .regular-carousel .nav .left-button svg {
-      width: 8rem;
+      width: 5rem;
       cursor: pointer; }
 
 /*# sourceMappingURL=styles.css.map */

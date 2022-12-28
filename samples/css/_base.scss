@@ -2,8 +2,6 @@
     --default-transition-time: .4s;
     --default-bg-color: #555;
     --default-text-color: #fff;
-    --body-padding-left: 1rem;
-    --body-padding-right: 1rem;
 }
 
 html {
@@ -20,7 +18,7 @@ html {
 body {
     background-color: var(--default-bg-color);
     color: var(--default-text-color);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 a {
@@ -30,8 +28,6 @@ a {
 
 .main-container {
     margin-top: 30px;
-    padding-left: var(--body-padding-left);
-    padding-right: var(--body-padding-right);
 }
 
 .section-carousel {
