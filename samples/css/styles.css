@@ -51,52 +51,66 @@ a {
 .fcarousel-item:nth-child(5) {
   background-image: url("../img/lisa.jpg"); }
 
-.regular-carousel .nav {
-  display: grid;
-  row-gap: 0.6rem;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas: "list      list" "underline underline" "carousel  carousel" "leftArrow rightArrow"; }
-  .regular-carousel .nav .nav__list {
-    grid-area: list;
-    position: relative;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    gap: 1rem; }
-    .regular-carousel .nav .nav__list .nav__list__link {
-      cursor: pointer; }
-    .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
-      opacity: 0.75; }
-  .regular-carousel .nav .nav__underline-container {
-    grid-area: underline;
-    position: relative;
-    height: 0.4rem;
-    margin-bottom: .8rem; }
-    .regular-carousel .nav .nav__underline-container .nav__underline {
-      position: absolute;
-      background-color: var(--default-text-color);
-      height: 100%;
-      width: 0;
-      transition: all var(--default-transition-time); }
-  .regular-carousel .nav .fcarousel {
-    grid-area: carousel;
-    height: 300px;
-    margin-bottom: 2.5rem; }
-    .regular-carousel .nav .fcarousel img {
-      display: block;
-      height: 100%; }
-  .regular-carousel .nav .right-button {
-    grid-area: rightArrow; }
-  .regular-carousel .nav .left-button {
-    grid-area: leftArrow; }
-  .regular-carousel .nav .right-button, .regular-carousel .nav .left-button {
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .regular-carousel .nav .right-button svg, .regular-carousel .nav .left-button svg {
-      width: 5rem;
-      cursor: pointer; }
+@media screen and (min-width: 40rem) {
+  body {
+    font-size: 1.8rem; } }
+.regular-carousel {
+  max-width: 89rem;
+  margin-left: auto;
+  margin-right: auto; }
+  .regular-carousel .nav {
+    display: grid;
+    row-gap: 0.6rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "list      list" "underline underline" "carousel  carousel" "leftArrow rightArrow"; }
+    .regular-carousel .nav .nav__list {
+      grid-area: list;
+      position: relative;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      gap: 1rem; }
+      .regular-carousel .nav .nav__list .nav__list__link {
+        cursor: pointer; }
+      .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
+        opacity: 0.75; }
+    .regular-carousel .nav .nav__underline-container {
+      grid-area: underline;
+      position: relative;
+      height: 0.4rem;
+      margin-bottom: .8rem; }
+      .regular-carousel .nav .nav__underline-container .nav__underline {
+        position: absolute;
+        background-color: var(--default-text-color);
+        height: 100%;
+        width: 0;
+        transition: all var(--default-transition-time); }
+    .regular-carousel .nav .fcarousel {
+      grid-area: carousel;
+      height: 300px;
+      margin-bottom: 2.5rem; }
+      .regular-carousel .nav .fcarousel img {
+        display: block;
+        height: 100%; }
+    .regular-carousel .nav .right-button {
+      grid-area: rightArrow; }
+    .regular-carousel .nav .left-button {
+      grid-area: leftArrow; }
+    .regular-carousel .nav .right-button, .regular-carousel .nav .left-button {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .regular-carousel .nav .right-button svg, .regular-carousel .nav .left-button svg {
+        width: 5rem;
+        cursor: pointer; }
+  @media screen and (min-width: 40rem) {
+    .regular-carousel .nav {
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: ".          list        ." ".          underline   ." "leftArrow carousel    rightArrow"; }
+      .regular-carousel .nav .nav__list {
+        padding: 0; }
+      .regular-carousel .nav .right-button svg, .regular-carousel .nav .left-button svg {
+        width: 8rem; } }
 
 /*# sourceMappingURL=styles.css.map */

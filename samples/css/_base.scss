@@ -64,3 +64,10 @@ a {
 .fcarousel-item:nth-child(5) {
     background-image: url('../img/lisa.jpg');
 }
+
+
+@media screen and (min-width: $minWidthBigPhone) {
+    body {
+        font-size: 1.8rem;
+    }
+}
