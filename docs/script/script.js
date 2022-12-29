@@ -5,7 +5,8 @@
     let sideCarouselOptions = {
         carousel: '#sideCarousel',
         side: 'right',
-        intervalDelay: 4000
+        intervalDelay: 4000,
+        fadeInDuration: 2000
     };
 
     new FCarousel(sideCarouselOptions);
