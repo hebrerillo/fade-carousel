@@ -1,12 +1,12 @@
 .heading-1 {
   text-align: center;
   text-transform: uppercase;
-  font-size: 2rem; }
+  font-size: 2.5rem;
+  color: var(--default-selected-text-color); }
 
 @media screen and (min-width: 48rem) {
   .heading-1 {
-    font-size: 4rem;
-    color: var(--default-selected-text-color); } }
+    font-size: 4rem; } }
 .section-carousel {
   padding-top: 8rem; }
   .section-carousel .heading-1 {
@@ -130,18 +130,38 @@ a {
       height: 40rem;
       margin-bottom: 0; } }
 
+.side-carousel .nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+  .side-carousel .nav .fcarousel {
+    align-self: stretch;
+    margin-bottom: 4rem; }
+  .side-carousel .nav .dots {
+    display: flex;
+    column-gap: 4rem; }
+    .side-carousel .nav .dots .dot {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer; }
+    .side-carousel .nav .dots .dot.dot--selected, .side-carousel .nav .dots .dot:hover {
+      background-color: var(--default-selected-text-color); }
 @media screen and (min-width: 40rem) {
   .side-carousel .nav {
     width: 56.5rem;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    justify-content: center;
     overflow: hidden; }
     .side-carousel .nav .fcarousel {
       margin-bottom: 2.5rem;
       width: 35rem;
       height: 40rem;
-      overflow: visible; } }
+      overflow: visible;
+      align-self: auto;
+      margin-bottom: 5.5rem; }
+    .side-carousel .nav .dots {
+      column-gap: 6rem; } }
 
 /*# sourceMappingURL=styles.css.map */

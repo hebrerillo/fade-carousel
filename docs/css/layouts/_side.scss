@@ -1,17 +1,49 @@
 .side-carousel {
+    .nav {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        .fcarousel {
+            align-self: stretch;
+            margin-bottom: 4rem;
+        }
+
+        .dots {
+            display: flex;
+            column-gap: 4rem;
+
+            .dot {
+                width: 1rem;
+                height: 1rem;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.5);
+                cursor: pointer;
+            }
+            
+            .dot.dot--selected, .dot:hover {
+                background-color: var(--default-selected-text-color);
+            }
+        }
+    }
+
     @media screen and (min-width: $minWidthBigPhone) {
         .nav {
             width: 56.5rem;
             margin-left: auto;
             margin-right: auto;
-            display: flex;
-            justify-content: center;
             overflow: hidden;
             .fcarousel {
                 margin-bottom: 2.5rem;
                 width: 35rem;
                 height: 40rem;
                 overflow: visible;
+                align-self: auto;
+                margin-bottom: 5.5rem;
+            }
+
+            .dots {
+                column-gap: 6rem;
             }
         }
     }

@@ -1,12 +1,12 @@
 .heading-1 {
     text-align: center;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    color: var(--default-selected-text-color);
 }
 
 @media screen and (min-width: $minWidthTabletPortrait) {
     .heading-1 {
         font-size: 4rem;
-        color: var(--default-selected-text-color);
     }
 }
