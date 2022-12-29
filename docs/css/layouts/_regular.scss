@@ -25,13 +25,13 @@
             .nav__list__underline_holder, #underline {
                 height: 0.4rem;
             }
-
-            .nav__list__link:not(.nav__list__link--active):not(:hover) {
-                opacity: 0.75;
+            
+            .nav__list__link.nav__list__link--active, .nav__list__link:hover {
+                color: var(--default-selected-text-color);
             }
 
             #underline {
-                background-color: white;
+                background-color: var(--default-selected-text-color);
                 bottom: 0;
                 transition: all var(--default-transition-time);
             }
@@ -58,6 +58,10 @@
                 width: 5rem;
                 cursor: pointer;
             }
+        }
+        
+        .right-button svg:hover, .left-button svg:hover {
+            color: var(--default-selected-text-color);
         }
     }
 

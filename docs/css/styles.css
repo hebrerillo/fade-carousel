@@ -5,7 +5,8 @@
 
 @media screen and (min-width: 48rem) {
   .heading-1 {
-    font-size: 4rem; } }
+    font-size: 4rem;
+    color: var(--default-selected-text-color); } }
 .section-carousel {
   padding-top: 8rem; }
   .section-carousel .heading-1 {
@@ -45,7 +46,8 @@
 :root {
   --default-transition-time: .4s;
   --default-bg-color: #555;
-  --default-text-color: #fff; }
+  --default-text-color: rgba(255, 255, 255, .75);
+  --default-selected-text-color: #fff; }
 
 html {
   box-sizing: border-box;
@@ -92,10 +94,10 @@ a {
       margin-bottom: 0.4rem; }
     .regular-carousel .nav .nav__list .nav__list__underline_holder, .regular-carousel .nav .nav__list #underline {
       height: 0.4rem; }
-    .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
-      opacity: 0.75; }
+    .regular-carousel .nav .nav__list .nav__list__link.nav__list__link--active, .regular-carousel .nav .nav__list .nav__list__link:hover {
+      color: var(--default-selected-text-color); }
     .regular-carousel .nav .nav__list #underline {
-      background-color: white;
+      background-color: var(--default-selected-text-color);
       bottom: 0;
       transition: all var(--default-transition-time); }
   .regular-carousel .nav .fcarousel {
@@ -112,6 +114,8 @@ a {
     .regular-carousel .nav .right-button svg, .regular-carousel .nav .left-button svg {
       width: 5rem;
       cursor: pointer; }
+  .regular-carousel .nav .right-button svg:hover, .regular-carousel .nav .left-button svg:hover {
+    color: var(--default-selected-text-color); }
 @media screen and (min-width: 40rem) {
   .regular-carousel .nav {
     grid-template-columns: repeat(3, auto);

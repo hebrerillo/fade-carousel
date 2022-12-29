@@ -1,7 +1,8 @@
 :root {
     --default-transition-time: .4s;
     --default-bg-color: #555;
-    --default-text-color: #fff;
+    --default-text-color: rgba(255, 255, 255, .75);
+    --default-selected-text-color: #fff;
 }
 
 html {

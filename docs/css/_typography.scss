@@ -7,5 +7,6 @@
 @media screen and (min-width: $minWidthTabletPortrait) {
     .heading-1 {
         font-size: 4rem;
+        color: var(--default-selected-text-color);
     }
 }
