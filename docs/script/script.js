@@ -13,7 +13,7 @@ function UnderlineSlide()
             {
                 carousel: '#regularCarousel',
                 onstart: this.moveUnderlineByIndex.bind(this),
-                intervalDelay: 0,
+                intervalDelay: 4500,
                 fadeInDuration: 1200
             };
     this.carousel = new FCarousel(carouselOptions);

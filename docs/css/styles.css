@@ -82,7 +82,7 @@ a {
       .regular-carousel .nav .nav__list #underline {
         background-color: white;
         bottom: 0;
-        transition: all 4s; }
+        transition: all var(--default-transition-time); }
     .regular-carousel .nav .nav__underline-container {
       grid-area: underline;
       position: relative;
