@@ -17,12 +17,12 @@
                 width: 1rem;
                 height: 1rem;
                 border-radius: 50%;
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: var(--light-text-color);
                 cursor: pointer;
             }
             
             .dot.dot--selected, .dot:hover {
-                background-color: var(--default-selected-text-color);
+                background-color: var(--selected-text-color);
             }
         }
     }

@@ -1,8 +1,9 @@
 :root {
     --default-transition-time: .4s;
-    --default-bg-color: #555;
-    --default-text-color: rgba(255, 255, 255, .75);
-    --default-selected-text-color: #fff;
+    --bg-color: #555;
+    --light-text-color: rgba(255, 255, 255, .5);
+    --text-color: rgba(255, 255, 255, .75);
+    --selected-text-color: #fff;
 }
 
 html {
@@ -17,8 +18,8 @@ html {
 }
 
 body {
-    background-color: var(--default-bg-color);
-    color: var(--default-text-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-size: 1.5rem;
 }
 

@@ -27,11 +27,11 @@
             }
             
             .nav__list__link.nav__list__link--active, .nav__list__link:hover {
-                color: var(--default-selected-text-color);
+                color: var(--selected-text-color);
             }
 
             #underline {
-                background-color: var(--default-selected-text-color);
+                background-color: var(--selected-text-color);
                 bottom: 0;
                 transition: all var(--default-transition-time);
             }
@@ -61,7 +61,7 @@
         }
         
         .right-button svg:hover, .left-button svg:hover {
-            color: var(--default-selected-text-color);
+            color: var(--selected-text-color);
         }
     }
 

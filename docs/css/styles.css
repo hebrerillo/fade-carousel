@@ -2,7 +2,7 @@
   text-align: center;
   text-transform: uppercase;
   font-size: 2.5rem;
-  color: var(--default-selected-text-color); }
+  color: var(--selected-text-color); }
 
 @media screen and (min-width: 48rem) {
   .heading-1 {
@@ -45,9 +45,10 @@
       margin-bottom: 5.5rem; } }
 :root {
   --default-transition-time: .4s;
-  --default-bg-color: #555;
-  --default-text-color: rgba(255, 255, 255, .75);
-  --default-selected-text-color: #fff; }
+  --bg-color: #555;
+  --light-text-color: rgba(255, 255, 255, .5);
+  --text-color: rgba(255, 255, 255, .75);
+  --selected-text-color: #fff; }
 
 html {
   box-sizing: border-box;
@@ -60,8 +61,8 @@ html {
   margin: 0; }
 
 body {
-  background-color: var(--default-bg-color);
-  color: var(--default-text-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-size: 1.5rem; }
 
 a {
@@ -95,9 +96,9 @@ a {
     .regular-carousel .nav .nav__list .nav__list__underline_holder, .regular-carousel .nav .nav__list #underline {
       height: 0.4rem; }
     .regular-carousel .nav .nav__list .nav__list__link.nav__list__link--active, .regular-carousel .nav .nav__list .nav__list__link:hover {
-      color: var(--default-selected-text-color); }
+      color: var(--selected-text-color); }
     .regular-carousel .nav .nav__list #underline {
-      background-color: var(--default-selected-text-color);
+      background-color: var(--selected-text-color);
       bottom: 0;
       transition: all var(--default-transition-time); }
   .regular-carousel .nav .fcarousel {
@@ -115,7 +116,7 @@ a {
       width: 5rem;
       cursor: pointer; }
   .regular-carousel .nav .right-button svg:hover, .regular-carousel .nav .left-button svg:hover {
-    color: var(--default-selected-text-color); }
+    color: var(--selected-text-color); }
 @media screen and (min-width: 40rem) {
   .regular-carousel .nav {
     grid-template-columns: repeat(3, auto);
@@ -144,10 +145,10 @@ a {
       width: 1rem;
       height: 1rem;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: var(--light-text-color);
       cursor: pointer; }
     .side-carousel .nav .dots .dot.dot--selected, .side-carousel .nav .dots .dot:hover {
-      background-color: var(--default-selected-text-color); }
+      background-color: var(--selected-text-color); }
 @media screen and (min-width: 40rem) {
   .side-carousel .nav {
     width: 56.5rem;
