@@ -7,9 +7,9 @@
   .heading-1 {
     font-size: 4rem; } }
 .section-carousel {
-  padding-top: 11rem; }
+  padding-top: 8rem; }
   .section-carousel .heading-1 {
-    margin-bottom: 6rem; }
+    margin-bottom: 4rem; }
 
 .section-carousel:first-child {
   padding-top: 4rem; }
@@ -33,7 +33,9 @@
 
 @media screen and (min-width: 48rem) {
   .section-carousel {
-    padding-top: 17rem; } }
+    padding-top: 16rem; }
+    .section-carousel .heading-1 {
+      margin-bottom: 5.5rem; } }
 :root {
   --default-transition-time: .4s;
   --default-bg-color: #555;

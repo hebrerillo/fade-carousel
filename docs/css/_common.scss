@@ -1,8 +1,8 @@
 .section-carousel {
-    padding-top: 11rem;
+    padding-top: 8rem;
 
     .heading-1 {
-        margin-bottom: 6rem;
+        margin-bottom: 4rem;
     }
 }
 
@@ -35,6 +35,9 @@
 
 @media screen and (min-width: $minWidthTabletPortrait) {
     .section-carousel {
-        padding-top: 17rem;
+        padding-top: 16rem;
+        .heading-1 {
+            margin-bottom: 5.5rem;
+        }
     }
 }
