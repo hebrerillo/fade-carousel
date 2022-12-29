@@ -72,9 +72,17 @@ a {
       padding: 0 1.5rem;
       gap: 1rem; }
       .regular-carousel .nav .nav__list .nav__list__link {
-        cursor: pointer; }
+        display: block;
+        cursor: pointer;
+        margin-bottom: 0.4rem; }
+      .regular-carousel .nav .nav__list .nav__list__underline_holder, .regular-carousel .nav .nav__list #underline {
+        height: 0.4rem; }
       .regular-carousel .nav .nav__list .nav__list__link:not(.nav__list__link--active):not(:hover) {
         opacity: 0.75; }
+      .regular-carousel .nav .nav__list #underline {
+        background-color: white;
+        bottom: 0;
+        transition: all 4s; }
     .regular-carousel .nav .nav__underline-container {
       grid-area: underline;
       position: relative;
