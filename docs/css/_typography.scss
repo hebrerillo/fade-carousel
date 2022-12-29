@@ -1,0 +1,12 @@
+.heading-1 {
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-size: 2rem;
+}
+
+@media screen and (min-width: $minWidthTabletPortrait) {
+    .heading-1 {
+        font-size: 4rem;
+    }
+}

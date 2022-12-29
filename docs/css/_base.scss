@@ -26,48 +26,13 @@ a {
     color: inherit;
 }
 
-.main-container {
-    margin-top: 30px;
-}
 
-.section-carousel {
-    padding-top: 7rem;
-}
-
-.section-carousel:first-child
-{
-    padding-top: 4rem
-}
-
-.fcarousel-item {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.fcarousel-item:nth-child(1) {
-    background-image: url('../img/king.jpg');
-}
-
-.fcarousel-item:nth-child(2) {
-    background-image: url('../img/john.jpg');
-}
-
-.fcarousel-item:nth-child(3) {
-    background-image: url('../img/mark.jpg');
-}
-
-.fcarousel-item:nth-child(4) {
-    background-image: url('../img/beyonce.jpg');
-}
-
-.fcarousel-item:nth-child(5) {
-    background-image: url('../img/lisa.jpg');
-}
-
-
-@media screen and (min-width: $minWidthBigPhone) {
+@media screen and (min-width: $minWidthTabletPortrait) {
     body {
         font-size: 1.8rem;
+    }
+
+    .section-carousel {
+        padding-top: 17rem;
     }
 }
