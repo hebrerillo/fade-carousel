@@ -28,7 +28,7 @@ a {
 .section-carousel {
   padding-top: 7rem; }
 
-.section-carousel:nth-child(1) {
+.section-carousel:first-child {
   padding-top: 4rem; }
 
 .fcarousel-item {
