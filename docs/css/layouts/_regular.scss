@@ -4,9 +4,8 @@
         row-gap: 0.6rem;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "list      list"
-                              "underline underline"
-                              "carousel  carousel"
-                              "leftArrow rightArrow";
+            "carousel  carousel"
+            "leftArrow rightArrow";
         .nav__list {
             grid-area: list;
             position: relative;
@@ -15,13 +14,14 @@
             justify-content: space-between;
             padding: 0 1.5rem;
             gap: 1rem;
+            margin-bottom: 2rem;
 
             .nav__list__link {
                 display: block;
                 cursor: pointer;
                 margin-bottom: 0.4rem;
             }
-            
+
             .nav__list__underline_holder, #underline {
                 height: 0.4rem;
             }
@@ -29,7 +29,7 @@
             .nav__list__link:not(.nav__list__link--active):not(:hover) {
                 opacity: 0.75;
             }
-            
+
             #underline {
                 background-color: white;
                 bottom: 0;
@@ -37,38 +37,20 @@
             }
         }
 
-        .nav__underline-container {
-            grid-area: underline;
-            position: relative;
-            height: 0.4rem;
-            margin-bottom: .8rem;
-            .nav__underline {
-                position: absolute;
-                background-color: var(--default-text-color);
-                height: 100%;
-                width: 0;
-                transition: all var(--default-transition-time);
-            }
-        }
-
         .fcarousel {
             grid-area: carousel;
-            height: 300px;
+            height: 30rem;
             margin-bottom: 2.5rem;
-            img {
-                display: block;
-                height: 100%;
-            }
         }
-        
+
         .right-button {
             grid-area: rightArrow;
         }
-        
+
         .left-button {
             grid-area: leftArrow;
         }
-        
+
         .right-button, .left-button {
             display: flex;
             align-items: center;
@@ -79,21 +61,26 @@
             }
         }
     }
-    
+
     @media screen and (min-width: $minWidthBigPhone) {
         .nav {
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: repeat(3, auto);
             grid-template-areas: ".          list        ."
-                                 ".          underline   ."
-                                  "leftArrow carousel    rightArrow";
+                                 "leftArrow carousel    rightArrow";
+            justify-content: center;
             .nav__list {
                 padding: 0;
             }
-            
+
             .right-button, .left-button {
                 svg {
                     width: 8rem;
                 }
+            }
+
+            .fcarousel {
+                width: 35rem;
+                height: 40rem;
             }
         }
     }
