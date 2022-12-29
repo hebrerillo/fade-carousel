@@ -1,11 +1,17 @@
 .side-carousel {
-    .nav {
-        .fcarousel {
-            height: 300px;
-            margin-bottom: 2.5rem;
-            img {
-                display: block;
-                height: 100%;
+    @media screen and (min-width: $minWidthBigPhone) {
+        .nav {
+            width: 56.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            .fcarousel {
+                margin-bottom: 2.5rem;
+                width: 35rem;
+                height: 40rem;
+                overflow: visible;
             }
         }
     }

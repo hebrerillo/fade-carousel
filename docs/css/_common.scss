@@ -8,7 +8,16 @@
 
 .section-carousel:first-child
 {
-    padding-top: 4rem
+    padding-top: 4rem;
+}
+
+.section-carousel:last-child
+{
+    padding-bottom: 4rem;
+}
+
+.fcarousel {
+    height: 30rem;
 }
 
 .fcarousel-item {

@@ -14,6 +14,12 @@
 .section-carousel:first-child {
   padding-top: 4rem; }
 
+.section-carousel:last-child {
+  padding-bottom: 4rem; }
+
+.fcarousel {
+  height: 30rem; }
+
 .fcarousel-item {
   background-position: center;
   background-size: cover;
@@ -94,8 +100,7 @@ a {
       transition: all var(--default-transition-time); }
   .regular-carousel .nav .fcarousel {
     grid-area: carousel;
-    height: 30rem;
-    margin-bottom: 2.5rem; }
+    margin-bottom: 1rem; }
   .regular-carousel .nav .right-button {
     grid-area: rightArrow; }
   .regular-carousel .nav .left-button {
@@ -118,13 +123,21 @@ a {
       width: 8rem; }
     .regular-carousel .nav .fcarousel {
       width: 35rem;
-      height: 40rem; } }
+      height: 40rem;
+      margin-bottom: 0; } }
 
-.side-carousel .nav .fcarousel {
-  height: 300px;
-  margin-bottom: 2.5rem; }
-  .side-carousel .nav .fcarousel img {
-    display: block;
-    height: 100%; }
+@media screen and (min-width: 40rem) {
+  .side-carousel .nav {
+    width: 56.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; }
+    .side-carousel .nav .fcarousel {
+      margin-bottom: 2.5rem;
+      width: 35rem;
+      height: 40rem;
+      overflow: visible; } }
 
 /*# sourceMappingURL=styles.css.map */
