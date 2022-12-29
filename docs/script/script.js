@@ -2,6 +2,9 @@
 
 (function(){
 
+/**
+ * A functionality that slides an underline to the different options of a menu. It also uses a carousel.
+ */
 function UnderlineSlide()
 {
     this.navigationMenu = document.querySelector('.nav');
