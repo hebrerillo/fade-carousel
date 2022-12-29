@@ -1,5 +1,7 @@
 'use strict';
 
+(function(){
+
 function UnderlineSlide()
 {
     this.navigationMenu = document.querySelector('.nav');
@@ -155,4 +157,6 @@ UnderlineSlide.prototype.underlineTransitionEnd = function(event)
     }
 };
 
-const underline = new UnderlineSlide();
+new UnderlineSlide();
+
+})();
