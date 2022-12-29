@@ -100,6 +100,11 @@ UnderlineSlide.prototype.gotoMenuItem = function (menuItemElement, animate = tru
  */
 UnderlineSlide.prototype.detachUnderline = function()
 {
+    if (this.underline.style.position === 'absolute')
+    {
+        return;
+    }
+
     const currentUnderlineHolder = this.underline.closest('[data-list-item-index]');
     this.underline.style.transition = 'none';
     this.underline.style.position = 'absolute';
