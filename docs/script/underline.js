@@ -22,29 +22,8 @@ function UnderlineSlide()
                 fadeInDuration: 1200
             };
     this.carousel = new FCarousel(carouselOptions);
-    this.init();
-}
-
-/**
- * Perform some initialization.
- */
-UnderlineSlide.prototype.init = function ()
-{
-    this.setIndexes();
     this.gotoMenuItem(this.list.querySelector('.nav__list__item'), false);
-};
-
-/**
- * Sets the necessary indexes in the menu items.
- * 
- */
-UnderlineSlide.prototype.setIndexes = function ()
-{
-    this.list.querySelectorAll('.nav__list__link').forEach((element, index) =>
-    {
-        element.dataset.carouselTargetItem = index;
-    });
-};
+}
 
 /**
  * Goes to the next slide.
