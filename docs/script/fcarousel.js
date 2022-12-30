@@ -88,6 +88,7 @@ function FCarousel(options = {})
      */
     function styleItems()
     {
+        carousel.classList.add('fcarousel');
         if (!hideOverflow)
         {
             carousel.classList.add('fcarousel--overflow-visible');
@@ -178,7 +179,7 @@ function FCarousel(options = {})
 
         if (!doTransition)
         {
-            carousel.children[currentSlideNumber].offsetHeight;
+            carousel.children[currentSlideNumber].offsetHeight; // jshint ignore:line
             carousel.children[currentSlideNumber].style.transition = '';
             carousel.children[currentSlideNumber].style.transitionDuration = fadeInDuration + 'ms';
         }

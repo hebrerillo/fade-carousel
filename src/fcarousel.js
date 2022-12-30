@@ -88,6 +88,7 @@ function FCarousel(options = {})
      */
     function styleItems()
     {
+        carousel.classList.add('fcarousel');
         if (!hideOverflow)
         {
             carousel.classList.add('fcarousel--overflow-visible');
