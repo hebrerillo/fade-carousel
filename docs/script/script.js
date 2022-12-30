@@ -13,8 +13,8 @@
 
     let carousel = new FCarousel(sideCarouselOptions);
     
-    let dotsContainer = document.querySelector('.dots');
-    dotsContainer.addEventListener('click', (event)=>
+    let $dotsContainer = $('.dots');
+    $dotsContainer.click((event)=>
     {
        const dot = event.target.closest('.dot');
        if (!dot)
@@ -27,15 +27,15 @@
 
     function selectDot(dotIndex)
     {
-        dotsContainer.querySelectorAll('.dot').forEach((dotElement, index)=>
+        $dotsContainer.find('.dot').each((index, element)=>
         {
             if (dotIndex === index)
             {
-                dotElement.classList.add('dot--selected');
+                $(element).addClass('dot--selected');
             }
             else
             {
-                dotElement.classList.remove('dot--selected');
+                $(element).removeClass('dot--selected');
             }
         });
     }
