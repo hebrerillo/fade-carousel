@@ -164,5 +164,9 @@ a {
       margin-bottom: 5.5rem; }
     .side-carousel .nav .dots {
       column-gap: 6rem; } }
+@media screen and (min-width: 90em) {
+  .side-carousel .nav .dots .dot {
+    width: 1.5rem;
+    height: 1.5rem; } }
 
 /*# sourceMappingURL=styles.css.map */

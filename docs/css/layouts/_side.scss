@@ -47,4 +47,15 @@
             }
         }
     }
+    
+    @media screen and (min-width: $minWidthDesktop) {
+        .nav {
+            .dots {
+                .dot {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+        }
+    }
 }
