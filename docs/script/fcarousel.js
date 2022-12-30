@@ -33,7 +33,6 @@ function FCarousel(options = {})
      */
     function init()
     {
-        carousel.style.position = 'relative';
         styleItems();
         gotoSlide(0, false, false);
     }
