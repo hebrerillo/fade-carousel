@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.conf.js",
-    "testdebug": "karma start karma.conf.js --browsers=Chrome --single-run=false"
+    "testdebug": "karma start karma.conf.js --browsers=Chrome --single-run=false",
+    "lint": "jshint src/fcarousel.js"
   },
   "author": "Jesus Romero",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "jasmine-core": "^4.5.0",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.6.3",
+    "jshint": "^2.13.6",
     "karma": "^6.4.1",
     "karma-chrome-launcher": "^3.1.1",
     "karma-cli": "^2.0.0",

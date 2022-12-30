@@ -1,0 +1,15 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "latedef": false,
+    "evil": true,
+    "noarg": true,
+    "undef": true,
+    "eqnull": true,
+    "node": true,
+    "esversion": 11,
+    "globals": {
+        "window": true,
+        "document": true
+    }
+}
